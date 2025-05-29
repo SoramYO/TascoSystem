@@ -1,0 +1,6 @@
+@Tasco.TaskService.API_HostAddress = http://localhost:5252
+
+GET {{Tasco.TaskService.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.deps.json
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.dll
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.pdb
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.AssemblyInfoInputs.cache
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.AssemblyInfo.cs
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.csproj.CoreCompileInputs.cache
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.dll
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\refint\Tasco.ProjectService.Repository.dll
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.pdb
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\ref\Tasco.ProjectService.Repository.dll

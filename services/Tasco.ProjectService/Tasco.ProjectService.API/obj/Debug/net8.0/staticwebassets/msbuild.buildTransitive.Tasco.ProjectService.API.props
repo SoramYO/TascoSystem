@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Tasco.ProjectService.API.props" />
+</Project>
