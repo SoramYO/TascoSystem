@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password123@"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1434:1433"
+    restart: always
+    networks:
+      - app-network
+
+  projectservice:
+    build:
+      context: ./services/Tasco.ProjectService/Tasco.ProjectService.API
+      dockerfile: Dockerfile
+    container_name: projectservice
+    environment:
+      - ConnectionStrings__DefaultConnectionString=Server=sqlserver;Database=ProjectDb;User Id=sa;Password=Password123@;TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080;https://+:8081
+    depends_on:
+      - sqlserver
+    ports:
+      - "5001:8080"   # HTTP
+      - "5002:8081"   # gRPC
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

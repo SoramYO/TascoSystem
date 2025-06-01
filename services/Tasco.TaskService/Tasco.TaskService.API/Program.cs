@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Service.Mapping;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<TaskManagementDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAutoMapper(typeof(ProjectMappingProfile).Assembly);
 
 var app = builder.Build();
 
