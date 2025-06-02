@@ -27,6 +27,8 @@
 		<Folder Include="Controllers\" />
 		<Folder Include="Models\RequestModels\" />
 		<Folder Include="Models\ResponseModels\" />
+		<Folder Include="Payload\Request\" />
+		<Folder Include="Payload\Response\" />
 	</ItemGroup>
 
 	<ItemGroup>
