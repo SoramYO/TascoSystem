@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using Tasco.TaskService.API.GrpcServices;
 using Tasco.TaskService.API.Payload.Request;
 using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Repository.Paginate;
+using Tasco.TaskService.Service.BusinessModels;
 
 namespace Tasco.TaskService.API.Mapping
 {
@@ -8,15 +11,24 @@ namespace Tasco.TaskService.API.Mapping
 	{
 		public AutoMapperProfiles()
 		{
-			CreateMap<CreateProjectRequest, Project>()
-				.ForMember(dest => dest.Id, opt => opt.Ignore())
-				.ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
-				.ForMember(dest => dest.Status, opt => opt.MapFrom(src => "Active"));
+			CreateMap<CreateProjectRequest, ProjectBusinessModel>();
 
-			CreateMap<UpdateProjectRequest, Project>()
-				.ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
-				.ForMember(dest => dest.CreatedByUserId, opt => opt.Ignore())
-				.ForMember(dest => dest.CreatedByUserName, opt => opt.Ignore());
+			CreateMap<UpdateProjectRequest, ProjectBusinessModel>();
+
+			CreateMap<ProjectBusinessModel, Project>();
+			CreateMap<Project, ProjectBusinessModel>();
+			CreateMap<Project, ProjectBusinessModel>();
+
+
+			CreateMap<ProjectBusinessModel, ProjectResponseGRPC>();
+
+			CreateMap<ProjectMember, ProjectMemberBusinessModel>().ReverseMap();
+			CreateMap<WorkArea, WorkAreaBusinessModel>().ReverseMap();
+
+			// Paginated results
+			CreateMap<IPaginate<Project>, IPaginate<ProjectBusinessModel>>()
+				.ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items));
+
 		}
 	}
 }

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36A736C8-48E8-4A62-9B00-6EB9BCFC864E}|Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj|d:\\project\\tascosystem\\services\\tasco.projectservice\\tasco.projectservice.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{36A736C8-48E8-4A62-9B00-6EB9BCFC864E}|Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj|solutionrelative:tasco.projectservice.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36A736C8-48E8-4A62-9B00-6EB9BCFC864E}|Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj|d:\\project\\tascosystem\\services\\tasco.projectservice\\tasco.projectservice.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{36A736C8-48E8-4A62-9B00-6EB9BCFC864E}|Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj|solutionrelative:tasco.projectservice.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36A736C8-48E8-4A62-9B00-6EB9BCFC864E}|Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj|d:\\project\\tascosystem\\services\\tasco.projectservice\\tasco.projectservice.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{36A736C8-48E8-4A62-9B00-6EB9BCFC864E}|Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj|solutionrelative:tasco.projectservice.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D1CC950E-B293-4CA6-8350-25870A3D4873}|Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj|d:\\project\\tascosystem\\services\\tasco.projectservice\\tasco.projectservice.repository\\unitofwork\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,177 +62,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1070,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 37,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": ".env",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\.env",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\.env",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\.env",
-              "RelativeToolTip": "Tasco.ProjectService.API\\.env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-29T14:44:58.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\appsettings.json",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\appsettings.json",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\appsettings.json",
-              "RelativeToolTip": "Tasco.ProjectService.API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-29T14:42:32.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAUwCAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:34:03.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:33:42.133Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAywEkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:31:38.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAIwIoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:31:28.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PaginateExtension.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:30:40.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Paginate.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:30:19.824Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IPaginate.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
-              "RelativeToolTip": "Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:30:03.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AutoMapperProfiles.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
-              "RelativeToolTip": "Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:27:57.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ExpressionExtensions.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
-              "RelativeToolTip": "Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAIwCsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T14:26:33.241Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Tasco.ProjectService.Service",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
-              "RelativeToolTip": "Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-29T13:41:50.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Tasco.ProjectService.API",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
-              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
-              "RelativeToolTip": "Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-29T13:41:26.915Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -376,6 +207,164 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".env",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\.env",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\.env",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\.env",
+              "RelativeToolTip": "Tasco.ProjectService.API\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-29T14:44:58.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\appsettings.json",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\appsettings.json",
+              "RelativeToolTip": "Tasco.ProjectService.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-29T14:42:32.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\UnitOfWork\\UnitOfWork.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAUwCAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:34:03.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\UnitOfWork\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:33:42.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\Repositories\\IGenericRepository.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAywEkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:31:38.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAIwIoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:31:28.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaginateExtension.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\Paginate\\PaginateExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:30:40.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Paginate.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\Paginate\\Paginate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:30:19.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IPaginate.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
+              "RelativeToolTip": "Tasco.ProjectService.Repository\\Paginate\\IPaginate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:30:03.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AutoMapperProfiles.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
+              "RelativeToolTip": "Tasco.ProjectService.API\\Mapping\\AutoMapperProfiles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:27:57.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ExpressionExtensions.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
+              "RelativeToolTip": "Tasco.ProjectService.API\\Configure\\ExpressionExtensions.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwCsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T14:26:33.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Tasco.ProjectService.Service.csproj",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
+              "RelativeToolTip": "Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-29T13:41:50.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Tasco.ProjectService.API.csproj",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
+              "RelativeDocumentMoniker": "Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
+              "RelativeToolTip": "Tasco.ProjectService.API\\Tasco.ProjectService.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-29T13:41:26.915Z"
             }
           ]
         }

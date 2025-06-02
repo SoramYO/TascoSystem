@@ -2,31 +2,29 @@
 using Tasco.TaskService.Service.Implementations;
 using Tasco.TaskService.Service.Interfaces;
 using Grpc.Core;
+using AutoMapper;
 
 namespace Tasco.TaskService.API.GrpcServices
 {
 	public class GrpcProjectService : ProjectService.ProjectServiceBase
 	{
 		private readonly IProjectService _projectService;
+		private readonly IMapper _mapper;
 
-		public GrpcProjectService(IProjectService projectService)
+		public GrpcProjectService(IProjectService projectService, IMapper mapper)
 		{
 			_projectService = projectService;
+			_mapper = mapper;
 		}
 
-		public override async Task<ProjectResponse> GetProjectById(ProjectRequest request, ServerCallContext context)
+		public override async Task<ProjectResponseGRPC> GetProjectById(ProjectRequestById request, ServerCallContext context)
 		{
 			var project = await _projectService.GetProjectById(Guid.Parse(request.Id));
 			if (project == null)
-				throw new RpcException(new Status(StatusCode.NotFound, "Project not found"));
-
-			return new ProjectResponse
 			{
-				Id = project.Id.ToString(),
-				Name = project.Name,
-				Description = project.Description
-				// Map các trường khác nếu cần
-			};
+				throw new RpcException(new Status(StatusCode.NotFound, $"Project with ID {request.Id} not found."));
+			}
+			return _mapper.Map<ProjectResponseGRPC>(project);
 		}
 
 		public override async Task<ProjectListResponse> GetAllProjects(ProjectListRequest request, ServerCallContext context)
@@ -35,14 +33,10 @@ namespace Tasco.TaskService.API.GrpcServices
 			var response = new ProjectListResponse();
 			foreach (var project in result.Items)
 			{
-				response.Projects.Add(new ProjectResponse
-				{
-					Id = project.Id.ToString(),
-					Name = project.Name,
-					Description = project.Description
-					// Map các trường khác nếu cần
-				});
-			}
+				response.Projects.Add(
+					_mapper.Map<ProjectResponseGRPC>(project)
+				);
+			};
 			return response;
 		}
 	}

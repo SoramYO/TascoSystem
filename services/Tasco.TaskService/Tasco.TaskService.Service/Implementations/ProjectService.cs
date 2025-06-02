@@ -54,8 +54,6 @@ namespace Tasco.TaskService.Service.Implementations
 			var project = await _unitOfWork.GetRepository<Project>().SingleOrDefaultAsync(
 				predicate: p => p.Id == projectId,
 				include: p => p.Include(x => x.ProjectMembers).Include(x => x.WorkAreas));
-
-			// Map Entity to BusinessModel
 			return _mapper.Map<ProjectBusinessModel>(project);
 		}
 

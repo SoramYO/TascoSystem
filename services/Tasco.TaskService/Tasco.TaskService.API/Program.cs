@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Tasco.TaskService.API.Mapping;
 using Tasco.TaskService.Repository.Entities;
-using Tasco.TaskService.Service.Mapping;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TaskManagementDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddAutoMapper(typeof(ProjectMappingProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
 
