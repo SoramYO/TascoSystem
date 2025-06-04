@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tasco.NotificationService.Worker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf1eff7f00e50e5287132adf4407ae276df12a73")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tasco.NotificationService.Worker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tasco.NotificationService.Worker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
