@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasco.NotificationService.Worker", "Tasco.NotificationService.Worker\Tasco.NotificationService.Worker.csproj", "{9C960B99-797A-45BE-BE13-7BF228E38908}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasco.NotificationService.Service", "Tasco.NotificationService.Service\Tasco.NotificationService.Service.csproj", "{50B308DA-5BDE-4096-B98B-60AD50821D96}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasco.NotificationService.Repository", "Tasco.NotificationService.Repository\Tasco.NotificationService.Repository.csproj", "{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +15,6 @@ Global
 		{9C960B99-797A-45BE-BE13-7BF228E38908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C960B99-797A-45BE-BE13-7BF228E38908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C960B99-797A-45BE-BE13-7BF228E38908}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50B308DA-5BDE-4096-B98B-60AD50821D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50B308DA-5BDE-4096-B98B-60AD50821D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50B308DA-5BDE-4096-B98B-60AD50821D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50B308DA-5BDE-4096-B98B-60AD50821D96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
