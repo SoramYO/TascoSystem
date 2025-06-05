@@ -1,0 +1,5297 @@
+# ==================================================
+# Path: D:\TascoSystem
+# Detected tech: csharp, docker
+# ==================================================
+
+## DIRECTORY STRUCTURE
+```
+TascoSystem/
+├── .git/
+├── .github/
+├── services/
+│   ├── Tasco.Gateway/
+│   │   ├── .vs/
+│   │   ├── Tasco.Gateway.API/
+│   │   │   ├── Properties/
+│   │   │   │   └── launchSettings.json
+│   │   │   ├── obj/
+│   │   │   ├── Program.cs
+│   │   │   ├── Tasco.Gateway.API.csproj
+│   │   │   ├── Tasco.Gateway.API.csproj.user
+│   │   │   ├── Tasco.Gateway.API.http
+│   │   │   ├── appsettings.Development.json
+│   │   │   └── appsettings.json
+│   │   └── Tasco.Gateway.sln
+│   ├── Tasco.NotificationService/
+│   │   ├── .vs/
+│   │   ├── Tasco.NotificationService.Repository/
+│   │   │   ├── obj/
+│   │   │   ├── Class1.cs
+│   │   │   └── Tasco.NotificationService.Repository.csproj
+│   │   ├── Tasco.NotificationService.Service/
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   ├── Class1.cs
+│   │   │   └── Tasco.NotificationService.Service.csproj
+│   │   ├── Tasco.NotificationService.Worker/
+│   │   │   ├── Properties/
+│   │   │   │   └── launchSettings.json
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   ├── Program.cs
+│   │   │   ├── Tasco.NotificationService.Worker.csproj
+│   │   │   ├── Worker.cs
+│   │   │   ├── appsettings.Development.json
+│   │   │   └── appsettings.json
+│   │   └── Tasco.NotificationService.sln
+│   ├── Tasco.ProjectService/
+│   │   ├── .vs/
+│   │   ├── Tasco.ProjectService.API/
+│   │   │   ├── Configure/
+│   │   │   │   └── ExpressionExtensions.cs
+│   │   │   ├── Mapping/
+│   │   │   │   └── AutoMapperProfiles.cs
+│   │   │   ├── Properties/
+│   │   │   │   └── launchSettings.json
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   ├── .env
+│   │   │   ├── Dockerfile
+│   │   │   ├── Program.cs
+│   │   │   ├── Tasco.ProjectService.API.csproj
+│   │   │   ├── Tasco.ProjectService.API.csproj.user
+│   │   │   ├── Tasco.ProjectService.API.http
+│   │   │   ├── appsettings.Development.json
+│   │   │   └── appsettings.json
+│   │   ├── Tasco.ProjectService.Repository/
+│   │   │   ├── Paginate/
+│   │   │   │   ├── IPaginate.cs
+│   │   │   │   ├── Paginate.cs
+│   │   │   │   └── PaginateExtension.cs
+│   │   │   ├── Repositories/
+│   │   │   │   ├── GenericRepository.cs
+│   │   │   │   └── IGenericRepository.cs
+│   │   │   ├── UnitOfWork/
+│   │   │   │   ├── IUnitOfWork.cs
+│   │   │   │   └── UnitOfWork.cs
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   └── Tasco.ProjectService.Repository.csproj
+│   │   ├── Tasco.ProjectService.Service/
+│   │   │   ├── obj/
+│   │   │   └── Tasco.ProjectService.Service.csproj
+│   │   └── Tasco.ProjectService.sln
+│   ├── Tasco.TaskService/
+│   │   ├── .vs/
+│   │   ├── Tasco.TaskService.API/
+│   │   │   ├── Configure/
+│   │   │   │   └── ExpressionExtensions.cs
+│   │   │   ├── Controllers/
+│   │   │   ├── GrpcServices/
+│   │   │   │   └── GrpcProjectService.cs
+│   │   │   ├── Mapping/
+│   │   │   │   └── AutoMapperProfiles.cs
+│   │   │   ├── Middlewares/
+│   │   │   │   └── ExceptionMiddleware.cs
+│   │   │   ├── Payload/
+│   │   │   │   ├── Request/
+│   │   │   │   │   └── ProjectRequest.cs
+│   │   │   │   └── Response/
+│   │   │   ├── Properties/
+│   │   │   │   └── launchSettings.json
+│   │   │   ├── Protos/
+│   │   │   │   └── project_service.proto
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   ├── Program.cs
+│   │   │   ├── Tasco.TaskService.API.csproj
+│   │   │   ├── Tasco.TaskService.API.csproj.user
+│   │   │   ├── Tasco.TaskService.API.http
+│   │   │   ├── appsettings.Development.json
+│   │   │   └── appsettings.json
+│   │   ├── Tasco.TaskService.Repository/
+│   │   │   ├── Entities/
+│   │   │   │   ├── Project.cs
+│   │   │   │   ├── ProjectMember.cs
+│   │   │   │   ├── TaskAction.cs
+│   │   │   │   ├── TaskFile.cs
+│   │   │   │   ├── TaskManagementDbContext.cs
+│   │   │   │   ├── TaskManagementDbContextFactory.cs
+│   │   │   │   ├── TaskMember.cs
+│   │   │   │   ├── TaskObjective.cs
+│   │   │   │   ├── WorkArea.cs
+│   │   │   │   └── WorkTask.cs
+│   │   │   ├── Migrations/
+│   │   │   │   ├── 20250530090102_InitialCreate.Designer.cs
+│   │   │   │   ├── 20250530090102_InitialCreate.cs
+│   │   │   │   └── TaskManagementDbContextModelSnapshot.cs
+│   │   │   ├── Paginate/
+│   │   │   │   ├── IPaginate.cs
+│   │   │   │   ├── Paginate.cs
+│   │   │   │   └── PaginateExtension.cs
+│   │   │   ├── Repositories/
+│   │   │   │   ├── GenericRepository.cs
+│   │   │   │   ├── IGenericRepository.cs
+│   │   │   │   └── IGenericRepositoryFactory.cs
+│   │   │   ├── UnitOfWork/
+│   │   │   │   ├── IUnitOfWork.cs
+│   │   │   │   └── UnitOfWork.cs
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   └── Tasco.TaskService.Repository.csproj
+│   │   ├── Tasco.TaskService.Service/
+│   │   │   ├── BusinessModels/
+│   │   │   │   ├── ProjectBusinessModel.cs
+│   │   │   │   ├── ProjectMemberBusinessModel.cs
+│   │   │   │   └── WorkAreaBusinessModel.cs
+│   │   │   ├── Implementations/
+│   │   │   │   └── ProjectService.cs
+│   │   │   ├── Interfaces/
+│   │   │   │   └── IProjectService.cs
+│   │   │   ├── Mapping/
+│   │   │   │   └── ProjectMappingProfile.cs
+│   │   │   ├── bin/
+│   │   │   ├── obj/
+│   │   │   ├── BaseService.cs
+│   │   │   └── Tasco.TaskService.Service.csproj
+│   │   └── Tasco.TaskService.sln
+│   └── Tasco.UserAuthService/
+│       ├── Tasco.UserAuthService.API/
+│       │   ├── Configure/
+│       │   │   └── ExpressionExtensions.cs
+│       │   ├── Mapping/
+│       │   │   └── AutoMapperProfiles.cs
+│       │   ├── Middlewares/
+│       │   │   └── ExceptionMiddleware.cs
+│       │   ├── Properties/
+│       │   │   └── launchSettings.json
+│       │   ├── Program.cs
+│       │   ├── Tasco.UserAuthService.API.csproj
+│       │   ├── Tasco.UserAuthService.API.csproj.user
+│       │   ├── Tasco.UserAuthService.API.http
+│       │   └── appsettings.json
+│       ├── Tasco.UserAuthService.Repository/
+│       │   ├── DataSeedings/
+│       │   │   └── RoleDataSeeding.cs
+│       │   ├── Migrations/
+│       │   │   ├── 20250529153107_InitialCreate.Designer.cs
+│       │   │   ├── 20250529153107_InitialCreate.cs
+│       │   │   └── TascoAuthDBContextModelSnapshot.cs
+│       │   ├── Paginate/
+│       │   │   ├── IPaginate.cs
+│       │   │   ├── Paginate.cs
+│       │   │   └── PaginateExtension.cs
+│       │   ├── Repositories/
+│       │   │   ├── GenericRepository.cs
+│       │   │   └── IGenericRepository.cs
+│       │   ├── UnitOfWork/
+│       │   │   ├── IUnitOfWork.cs
+│       │   │   └── UnitOfWork.cs
+│       │   ├── Tasco.UserAuthService.Repository.csproj
+│       │   └── TascoAuthDBContext.cs
+│       ├── Tasco.UserAuthService.Service/
+│       │   └── Tasco.UserAuthService.Service.csproj
+│       └── Tasco.UserAuthService.sln
+├── .env
+├── .gitignore
+├── README.md
+├── docker-compose.yml
+└── source_dump.txt
+```
+
+## FILE CONTENTS
+
+### services\Tasco.Gateway\Tasco.Gateway.API\Program.cs
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+
+```
+
+### services\Tasco.NotificationService\Tasco.NotificationService.Repository\Class1.cs
+```cs
+﻿namespace Tasco.NotificationService.Repository
+{
+    public class Class1
+    {
+
+    }
+}
+
+```
+
+### services\Tasco.NotificationService\Tasco.NotificationService.Service\Class1.cs
+```cs
+﻿namespace Tasco.NotificationService.Service
+{
+    public class Class1
+    {
+
+    }
+}
+
+```
+
+### services\Tasco.NotificationService\Tasco.NotificationService.Worker\Program.cs
+```cs
+using Tasco.NotificationService.Worker;
+
+var builder = Host.CreateApplicationBuilder(args);
+builder.Services.AddHostedService<Worker>();
+
+var host = builder.Build();
+host.Run();
+
+```
+
+### services\Tasco.NotificationService\Tasco.NotificationService.Worker\Worker.cs
+```cs
+namespace Tasco.NotificationService.Worker
+{
+    public class Worker : BackgroundService
+    {
+        private readonly ILogger<Worker> _logger;
+
+        public Worker(ILogger<Worker> logger)
+        {
+            _logger = logger;
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                if (_logger.IsEnabled(LogLevel.Information))
+                {
+                    _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                }
+                await Task.Delay(1000, stoppingToken);
+            }
+        }
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.API\Program.cs
+```cs
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.API\Configure\ExpressionExtensions.cs
+```cs
+﻿using System.Linq.Expressions;
+
+namespace Tasco.ProjectService.API.Configure
+{
+    public static class ExpressionExtensions
+    {
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+        {
+            var parameter = Expression.Parameter(typeof(T));
+
+            var visitor = new ReplacingExpressionVisitor();
+            visitor.Add(expr1.Parameters[0], parameter);
+            visitor.Add(expr2.Parameters[0], parameter);
+
+            var combined = visitor.Visit(Expression.AndAlso(expr1.Body, expr2.Body));
+
+            return Expression.Lambda<Func<T, bool>>(combined, parameter);
+        }
+
+        private class ReplacingExpressionVisitor : ExpressionVisitor
+        {
+            private readonly Dictionary<Expression, Expression> _replacements;
+
+            public ReplacingExpressionVisitor()
+            {
+                _replacements = new Dictionary<Expression, Expression>();
+            }
+
+            public void Add(Expression original, Expression replacement)
+            {
+                _replacements[original] = replacement;
+            }
+
+            public override Expression Visit(Expression node)
+            {
+                if (node != null && _replacements.TryGetValue(node, out var replacement))
+                {
+                    return replacement;
+                }
+
+                return base.Visit(node);
+            }
+        }
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.API\Mapping\AutoMapperProfiles.cs
+```cs
+﻿using AutoMapper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Tasco.ProjectService.API.Mapping
+{
+    public class AutoMapperProfiles : Profile
+    {
+        public AutoMapperProfiles()
+        {
+        }
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\Paginate\IPaginate.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.ProjectService.Repository.Paginate
+{
+    public interface IPaginate<TResult>
+    {
+        int Size { get; }
+        int Page { get; }
+        int Total { get; }
+        int TotalPages { get; }
+        IList<TResult> Items { get; }
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\Paginate\Paginate.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.ProjectService.Repository.Paginate
+{
+    public class Paginate<TResult> : IPaginate<TResult>
+    {
+        public int Size { get; set; }
+        public int Page { get; set; }
+        public int Total { get; set; }
+        public int TotalPages { get; set; }
+        public IList<TResult> Items { get; set; }
+
+        public Paginate(IEnumerable<TResult> source, int page, int size, int firstPage)
+        {
+            var enumerable = source as TResult[] ?? source.ToArray();
+            if (firstPage > page)
+            {
+                throw new ArgumentException($"Page ({page}) must be greater or equal than firstPage ({firstPage})");
+            }
+
+            if (source is IQueryable<TResult> queryable)
+            {
+                Page = page;
+                Size = size;
+                Total = queryable.Count();
+                Items = queryable.Skip((page - firstPage) * size).Take(size).ToList();
+                TotalPages = (int)Math.Ceiling(Total / (double)Size);
+            }
+            else
+            {
+                Page = page;
+                Size = size;
+                Total = enumerable.Length;
+                Items = enumerable.Skip((page - firstPage) * size).Take(size).ToList();
+                TotalPages = (int)Math.Ceiling(Total / (double)Size);
+            }
+        }
+
+        public Paginate()
+        {
+            Items = Array.Empty<TResult>();
+        }
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\Paginate\PaginateExtension.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.ProjectService.Repository.Paginate
+{
+    public static class PaginateExtension
+    {
+        public static async Task<IPaginate<T>> ToPaginateAsync<T>(this IQueryable<T> queryable, int page, int size, int firstPage = 1)
+        {
+            if (page < firstPage) page = firstPage;
+            var total = await queryable.CountAsync();
+            var items = await queryable.Skip((page - firstPage) * size).Take(size).ToListAsync();
+            var totalPages = (int)Math.Ceiling(total / (double)size);
+            return new Paginate<T>
+            {
+                Page = page,
+                Size = size,
+                Total = total,
+                Items = items,
+                TotalPages = totalPages
+            };
+        }
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\Repositories\GenericRepository.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.ProjectService.Repository.Paginate;
+
+namespace Tasco.ProjectService.Repository.Repositories
+{
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        protected readonly DbContext _dbContext;
+        protected readonly DbSet<T> _dbSet;
+
+        public GenericRepository(DbContext context)
+        {
+            _dbContext = context;
+            _dbSet = context.Set<T>();
+        }
+
+        #region Gett Async
+
+        public virtual async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, bool enableSplitQuery = false)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+
+            if (enableSplitQuery) query = query.AsSplitQuery();
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().FirstOrDefaultAsync();
+
+            return await query.AsNoTracking().FirstOrDefaultAsync();
+        }
+
+        public virtual async Task<TResult> SingleOrDefaultAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).FirstOrDefaultAsync();
+
+            return await query.AsNoTracking().Select(selector).FirstOrDefaultAsync();
+        }
+
+        public virtual async Task<ICollection<T>> GetListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().ToListAsync();
+
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public virtual async Task<ICollection<TResult>> GetListAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).ToListAsync();
+
+            return await query.AsNoTracking().Select(selector).ToListAsync();
+        }
+
+        public Task<IPaginate<T>> GetPagingListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1,
+            int size = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+            if (predicate != null) query = query.Where(predicate);
+            query = query.AsNoTracking();
+            if (orderBy != null) return orderBy(query).ToPaginateAsync(page, size, 1);
+            return query.AsNoTracking().ToPaginateAsync(page, size, 1);
+        }
+
+        public Task<IPaginate<TResult>> GetPagingListAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1, int size = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+            if (predicate != null) query = query.Where(predicate);
+            if (orderBy != null) return orderBy(query).Select(selector).ToPaginateAsync(page, size, 1);
+            return query.AsNoTracking().Select(selector).ToPaginateAsync(page, size, 1);
+        }
+
+        #endregion
+
+        #region Insert
+
+        public async Task InsertAsync(T entity)
+        {
+            if (entity == null) return;
+            await _dbSet.AddAsync(entity);
+        }
+
+        public async Task InsertRangeAsync(IEnumerable<T> entities)
+        {
+            await _dbSet.AddRangeAsync(entities);
+        }
+
+        #endregion
+
+        #region Update
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<T> entities)
+        {
+            _dbSet.UpdateRange(entities);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
+
+        #endregion
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\Repositories\IGenericRepository.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.ProjectService.Repository.Paginate;
+
+namespace Tasco.ProjectService.Repository.Repositories
+{
+    public interface IGenericRepository<T>
+    {
+        #region Get Async
+
+        Task<T> SingleOrDefaultAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            bool enableSplitQuery = false);
+
+        Task<TResult> SingleOrDefaultAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<ICollection<T>> GetListAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<ICollection<TResult>> GetListAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<IPaginate<T>> GetPagingListAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            int page = 1,
+            int size = 10);
+
+        Task<IPaginate<TResult>> GetPagingListAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            int page = 1,
+            int size = 10);
+
+        #endregion
+
+        #region Insert
+
+        Task InsertAsync(T entity);
+
+        Task InsertRangeAsync(IEnumerable<T> entities);
+
+        #endregion
+
+        #region Update
+
+        void Update(T entity);
+
+        void UpdateRange(IEnumerable<T> entities);
+
+        #endregion
+
+        void Delete(T entity);
+        void DeleteRange(IEnumerable<T> entities);
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\UnitOfWork\IUnitOfWork.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.ProjectService.Repository.UnitOfWork
+{
+    public interface IUnitOfWork : IDisposable
+    {
+        Task SaveChangesAsync();
+    }
+}
+
+```
+
+### services\Tasco.ProjectService\Tasco.ProjectService.Repository\UnitOfWork\UnitOfWork.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.ProjectService.Repository.UnitOfWork
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    //_context.Dispose();
+                }
+            }
+            disposed = true;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.API\Program.cs
+```cs
+using Microsoft.EntityFrameworkCore;
+using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Service.Mapping;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<TaskManagementDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAutoMapper(typeof(ProjectMappingProfile).Assembly);
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.API\Configure\ExpressionExtensions.cs
+```cs
+﻿using System.Linq.Expressions;
+
+namespace Tasco.TaskService.API.Configure
+{
+    public static class ExpressionExtensions
+    {
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+        {
+            var parameter = Expression.Parameter(typeof(T));
+
+            var visitor = new ReplacingExpressionVisitor();
+            visitor.Add(expr1.Parameters[0], parameter);
+            visitor.Add(expr2.Parameters[0], parameter);
+
+            var combined = visitor.Visit(Expression.AndAlso(expr1.Body, expr2.Body));
+
+            return Expression.Lambda<Func<T, bool>>(combined, parameter);
+        }
+
+        private class ReplacingExpressionVisitor : ExpressionVisitor
+        {
+            private readonly Dictionary<Expression, Expression> _replacements;
+
+            public ReplacingExpressionVisitor()
+            {
+                _replacements = new Dictionary<Expression, Expression>();
+            }
+
+            public void Add(Expression original, Expression replacement)
+            {
+                _replacements[original] = replacement;
+            }
+
+            public override Expression Visit(Expression node)
+            {
+                if (node != null && _replacements.TryGetValue(node, out var replacement))
+                {
+                    return replacement;
+                }
+
+                return base.Visit(node);
+            }
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.API\GrpcServices\GrpcProjectService.cs
+```cs
+﻿using Microsoft.AspNetCore.Http;
+using Tasco.TaskService.Service.Implementations;
+using Tasco.TaskService.Service.Interfaces;
+using Grpc.Core;
+
+namespace Tasco.TaskService.API.GrpcServices
+{
+	public class GrpcProjectService : ProjectService.ProjectServiceBase
+	{
+		private readonly IProjectService _projectService;
+
+		public GrpcProjectService(IProjectService projectService)
+		{
+			_projectService = projectService;
+		}
+
+		public override async Task<ProjectResponse> GetProjectById(ProjectRequest request, ServerCallContext context)
+		{
+			var project = await _projectService.GetProjectById(Guid.Parse(request.Id));
+			if (project == null)
+				throw new RpcException(new Status(StatusCode.NotFound, "Project not found"));
+
+			return new ProjectResponse
+			{
+				Id = project.Id.ToString(),
+				Name = project.Name,
+				Description = project.Description
+				// Map các trường khác nếu cần
+			};
+		}
+
+		public override async Task<ProjectListResponse> GetAllProjects(ProjectListRequest request, ServerCallContext context)
+		{
+			var result = await _projectService.GetAllProjects(request.PageSize, request.PageIndex, request.Search);
+			var response = new ProjectListResponse();
+			foreach (var project in result.Items)
+			{
+				response.Projects.Add(new ProjectResponse
+				{
+					Id = project.Id.ToString(),
+					Name = project.Name,
+					Description = project.Description
+					// Map các trường khác nếu cần
+				});
+			}
+			return response;
+		}
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.API\Mapping\AutoMapperProfiles.cs
+```cs
+﻿using AutoMapper;
+using Tasco.TaskService.API.Payload.Request;
+using Tasco.TaskService.Repository.Entities;
+
+namespace Tasco.TaskService.API.Mapping
+{
+	public class AutoMapperProfiles : Profile
+	{
+		public AutoMapperProfiles()
+		{
+			CreateMap<CreateProjectRequest, Project>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
+				.ForMember(dest => dest.Status, opt => opt.MapFrom(src => "Active"));
+
+			CreateMap<UpdateProjectRequest, Project>()
+				.ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+				.ForMember(dest => dest.CreatedByUserId, opt => opt.Ignore())
+				.ForMember(dest => dest.CreatedByUserName, opt => opt.Ignore());
+		}
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.API\Middlewares\ExceptionMiddleware.cs
+```cs
+﻿using Microsoft.AspNetCore.Diagnostics;
+using System.Net;
+
+namespace Tasco.TaskService.API.Middlewares
+{
+    public class ExceptionMiddleware
+    {
+        private readonly ILogger<ExceptionHandlerMiddleware> logger;
+        private readonly RequestDelegate next;
+
+        public ExceptionMiddleware(
+            ILogger<ExceptionHandlerMiddleware> logger,
+            RequestDelegate next)
+        {
+            this.logger = logger;
+            this.next = next;
+        }
+        public async Task InvokeAsync(HttpContext httpContext)
+        {
+            try
+            {
+                if (logger.IsEnabled(LogLevel.Debug))
+                {
+                    logger.LogDebug("Processing request: {Method} {Path}", httpContext.Request.Method, httpContext.Request.Path);
+                }
+                await next(httpContext);
+            }
+            catch (Exception ex)
+            {
+                var errorId = Guid.NewGuid();
+                //log this exception
+                logger.LogError(ex, $"{errorId} : {ex.Message}");
+                //return custom error response
+                httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                httpContext.Response.ContentType = "application/json";
+                var error = new
+                {
+                    Id = errorId,
+                    ErrorMessage = "Something went wrong. Please contact support."
+                };
+                await httpContext.Response.WriteAsJsonAsync(error);
+
+            }
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.API\Payload\Request\ProjectRequest.cs
+```cs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Tasco.TaskService.API.Payload.Request
+{
+	public class ProjectRequest
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		[Required]
+		[StringLength(200)]
+		public string Name { get; set; }
+
+		[StringLength(1000)]
+		public string Description { get; set; }
+
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+		public DateTime? StartDate { get; set; }
+
+		public DateTime? EndDate { get; set; }
+
+		[StringLength(50)]
+		public string Status { get; set; } = "Active";
+
+		[Required]
+		public Guid CreatedByUserId { get; set; }
+
+		[StringLength(200)]
+		public string CreatedByUserName { get; set; }
+	}
+
+	public class CreateProjectRequest
+	{
+		[Required(ErrorMessage = "Project name is required")]
+		[StringLength(200, ErrorMessage = "Project name cannot exceed 200 characters")]
+		public string Name { get; set; }
+
+		[StringLength(1000, ErrorMessage = "Description cannot exceed 1000 characters")]
+		public string Description { get; set; }
+
+		public DateTime? StartDate { get; set; }
+
+		public DateTime? EndDate { get; set; }
+
+		[Required(ErrorMessage = "Created by user ID is required")]
+		public Guid CreatedByUserId { get; set; }
+
+		[Required(ErrorMessage = "Created by user name is required")]
+		[StringLength(200, ErrorMessage = "User name cannot exceed 200 characters")]
+		public string CreatedByUserName { get; set; }
+
+		// Validation
+		public bool IsValid()
+		{
+			if (StartDate.HasValue && EndDate.HasValue && StartDate > EndDate)
+				return false;
+
+			return true;
+		}
+	}
+	public class UpdateProjectRequest
+	{
+		[Required(ErrorMessage = "Project ID is required")]
+		public Guid Id { get; set; }
+
+		[Required(ErrorMessage = "Project name is required")]
+		[StringLength(200, ErrorMessage = "Project name cannot exceed 200 characters")]
+		public string Name { get; set; }
+
+		[StringLength(1000, ErrorMessage = "Description cannot exceed 1000 characters")]
+		public string Description { get; set; }
+
+		public DateTime? StartDate { get; set; }
+
+		public DateTime? EndDate { get; set; }
+
+		[StringLength(50, ErrorMessage = "Status cannot exceed 50 characters")]
+		public string Status { get; set; }
+
+		// Validation
+		public bool IsValid()
+		{
+			if (StartDate.HasValue && EndDate.HasValue && StartDate > EndDate)
+				return false;
+
+			return true;
+		}
+	}
+
+	public class ProjectSearchRequest
+	{
+		public string Search { get; set; }
+		public int PageSize { get; set; } = 10;
+		public int PageIndex { get; set; } = 1;
+		public string Status { get; set; }
+		public Guid? CreatedByUserId { get; set; }
+		public DateTime? StartDateFrom { get; set; }
+		public DateTime? StartDateTo { get; set; }
+		public DateTime? EndDateFrom { get; set; }
+		public DateTime? EndDateTo { get; set; }
+		public string SortBy { get; set; } = "CreatedDate";
+		public string SortDirection { get; set; } = "DESC"; // ASC or DESC
+
+		// Validation
+		public void Validate()
+		{
+			if (PageSize <= 0) PageSize = 10;
+			if (PageSize > 100) PageSize = 100; // Limit max page size
+			if (PageIndex <= 0) PageIndex = 1;
+		}
+	}
+}
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\Project.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class Project
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		[Required]
+		[StringLength(200)]
+		public string Name { get; set; }
+
+		[StringLength(1000)]
+		public string Description { get; set; }
+
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+		public DateTime? StartDate { get; set; }
+
+		public DateTime? EndDate { get; set; }
+
+		[StringLength(50)]
+		public string Status { get; set; } = "Active";
+
+		[Required]
+		public Guid CreatedByUserId { get; set; }
+
+		[StringLength(200)]
+		public string CreatedByUserName { get; set; }
+
+		public virtual ICollection<ProjectMember> ProjectMembers { get; set; } = new List<ProjectMember>();
+		public virtual ICollection<WorkArea> WorkAreas { get; set; } = new List<WorkArea>();
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\ProjectMember.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class ProjectMember
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid ProjectId { get; set; }
+
+		[Required]
+		public Guid UserId { get; set; } // Id từ Identity service
+
+		[StringLength(200)]
+		public string UserName { get; set; } // Cache để hiển thị
+
+		[StringLength(200)]
+		public string UserEmail { get; set; } // Cache để hiển thị
+
+		[StringLength(50)]
+		public string Role { get; set; } = "Member"; // Admin, Manager, Member
+
+		public DateTime JoinedDate { get; set; } = DateTime.Now;
+
+		public bool IsActive { get; set; } = true;
+
+		// Foreign key
+		[ForeignKey("ProjectId")]
+		public virtual Project Project { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\TaskAction.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class TaskAction
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid WorkTaskId { get; set; }
+
+		[Required]
+		public Guid UserId { get; set; }
+
+		[StringLength(200)]
+		public string UserName { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		public string ActionType { get; set; } // Created, Updated, Deleted, StatusChanged, MemberAdded, etc.
+
+		[StringLength(2000)]
+		public string Description { get; set; }
+
+		[StringLength(1000)]
+		public string OldValue { get; set; }
+
+		[StringLength(1000)]
+		public string NewValue { get; set; }
+
+		public DateTime ActionDate { get; set; } = DateTime.Now;
+
+		// Foreign key
+		[ForeignKey("WorkTaskId")]
+		public virtual WorkTask WorkTask { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\TaskFile.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class TaskFile
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid WorkTaskId { get; set; }
+
+		[Required]
+		[StringLength(300)]
+		public string FileName { get; set; }
+
+		[Required]
+		[StringLength(500)]
+		public string FilePath { get; set; }
+
+		[StringLength(50)]
+		public string FileType { get; set; }
+
+		public long FileSize { get; set; }
+
+		public DateTime UploadedDate { get; set; } = DateTime.Now;
+
+		[Required]
+		public Guid UploadedByUserId { get; set; }
+
+		[StringLength(200)]
+		public string UploadedByUserName { get; set; }
+
+		// Foreign key
+		[ForeignKey("WorkTaskId")]
+		public virtual WorkTask WorkTask { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\TaskManagementDbContext.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class TaskManagementDbContext : DbContext
+	{
+		public TaskManagementDbContext(DbContextOptions<TaskManagementDbContext> options)
+			: base(options)
+		{
+		}
+
+		// DbSets
+		public DbSet<Project> Projects { get; set; }
+		public DbSet<ProjectMember> ProjectMembers { get; set; }
+		public DbSet<WorkArea> WorkAreas { get; set; }
+		public DbSet<WorkTask> WorkTasks { get; set; }
+		public DbSet<TaskObjective> TaskObjectives { get; set; }
+		public DbSet<TaskMember> TaskMembers { get; set; }
+		public DbSet<TaskFile> TaskFiles { get; set; }
+		public DbSet<TaskAction> TaskActions { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			// Cấu hình các quan hệ và ràng buộc
+
+			// Project relationships
+			modelBuilder.Entity<Project>()
+				.HasMany(p => p.ProjectMembers)
+				.WithOne(pm => pm.Project)
+				.HasForeignKey(pm => pm.ProjectId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			modelBuilder.Entity<Project>()
+				.HasMany(p => p.WorkAreas)
+				.WithOne(wa => wa.Project)
+				.HasForeignKey(wa => wa.ProjectId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			// WorkArea relationships
+			modelBuilder.Entity<WorkArea>()
+				.HasMany(wa => wa.WorkTasks)
+				.WithOne(wt => wt.WorkArea)
+				.HasForeignKey(wt => wt.WorkAreaId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			// WorkTask relationships
+			modelBuilder.Entity<WorkTask>()
+				.HasMany(wt => wt.TaskObjectives)
+				.WithOne(to => to.WorkTask)
+				.HasForeignKey(to => to.WorkTaskId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			modelBuilder.Entity<WorkTask>()
+				.HasMany(wt => wt.TaskMembers)
+				.WithOne(tm => tm.WorkTask)
+				.HasForeignKey(tm => tm.WorkTaskId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			modelBuilder.Entity<WorkTask>()
+				.HasMany(wt => wt.TaskFiles)
+				.WithOne(tf => tf.WorkTask)
+				.HasForeignKey(tf => tf.WorkTaskId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			modelBuilder.Entity<WorkTask>()
+				.HasMany(wt => wt.TaskActions)
+				.WithOne(ta => ta.WorkTask)
+				.HasForeignKey(ta => ta.WorkTaskId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			// Indexes cho performance
+			modelBuilder.Entity<Project>()
+				.HasIndex(p => p.CreatedByUserId);
+
+			modelBuilder.Entity<ProjectMember>()
+				.HasIndex(pm => pm.UserId);
+
+			modelBuilder.Entity<ProjectMember>()
+				.HasIndex(pm => new { pm.ProjectId, pm.UserId })
+				.IsUnique();
+
+			modelBuilder.Entity<WorkTask>()
+				.HasIndex(wt => wt.CreatedByUserId);
+
+			modelBuilder.Entity<TaskMember>()
+				.HasIndex(tm => tm.UserId);
+
+			modelBuilder.Entity<TaskMember>()
+				.HasIndex(tm => new { tm.WorkTaskId, tm.UserId })
+				.IsUnique();
+
+			modelBuilder.Entity<TaskAction>()
+				.HasIndex(ta => ta.UserId);
+
+			modelBuilder.Entity<TaskAction>()
+				.HasIndex(ta => ta.ActionDate);
+
+			// Seed data (optional)
+			SeedData(modelBuilder);
+		}
+
+		private void SeedData(ModelBuilder modelBuilder)
+		{
+			// Không seed user data vì user được quản lý ở Auth service
+			// Có thể seed một số data khác như default status, priority values
+		}
+
+		// Override SaveChanges để tự động thêm TaskAction khi có thay đổi
+		public override int SaveChanges()
+		{
+			return base.SaveChanges();
+		}
+
+		public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+		{
+			return await base.SaveChangesAsync(cancellationToken);
+		}
+
+		// Method để track changes với user context
+		public async Task<int> SaveChangesAsync(Guid currentUserId, string currentUserName, CancellationToken cancellationToken = default)
+		{
+			TrackChanges(currentUserId, currentUserName);
+			return await base.SaveChangesAsync(cancellationToken);
+		}
+
+		public int SaveChanges(Guid currentUserId, string currentUserName)
+		{
+			TrackChanges(currentUserId, currentUserName);
+			return base.SaveChanges();
+		}
+
+		private void TrackChanges(Guid currentUserId, string currentUserName)
+		{
+			var entries = ChangeTracker.Entries<WorkTask>()
+				.Where(e => e.State == EntityState.Modified || e.State == EntityState.Added)
+				.ToList();
+
+			foreach (var entry in entries)
+			{
+				var entity = entry.Entity;
+				var actionType = entry.State == EntityState.Added ? "Created" : "Updated";
+
+				// Tạo TaskAction để ghi lại thay đổi
+				var taskAction = new TaskAction
+				{
+					WorkTaskId = entity.Id,
+					UserId = currentUserId,
+					UserName = currentUserName,
+					ActionType = actionType,
+					Description = $"Task {actionType.ToLower()}",
+					ActionDate = DateTime.Now
+				};
+
+				// Nếu là update, ghi lại các field đã thay đổi
+				if (entry.State == EntityState.Modified)
+				{
+					var changedProperties = entry.Properties
+						.Where(p => p.IsModified)
+						.Select(p => p.Metadata.Name)
+						.ToList();
+
+					taskAction.Description = $"Task updated: {string.Join(", ", changedProperties)}";
+				}
+
+				TaskActions.Add(taskAction);
+			}
+		}
+	}
+}
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\TaskManagementDbContextFactory.cs
+```cs
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+    public class TaskManagementDbContextFactory : IDesignTimeDbContextFactory<TaskManagementDbContext>
+    {
+        public TaskManagementDbContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TaskManagementDbContext>();
+            // TODO: Replace with your actual connection string or load from config
+            optionsBuilder.UseSqlServer("Server=(local);Database=TascoTask;User Id=sa;Password=12345;Trusted_Connection=True;TrustServerCertificate=True");
+
+            return new TaskManagementDbContext(optionsBuilder.Options);
+        }
+    }
+}
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\TaskMember.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class TaskMember
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid WorkTaskId { get; set; }
+
+		[Required]
+		public Guid UserId { get; set; } // Id từ Identity service
+
+		[StringLength(200)]
+		public string UserName { get; set; } // Cache
+
+		[StringLength(200)]
+		public string UserEmail { get; set; } // Cache
+
+		[StringLength(50)]
+		public string Role { get; set; } = "Assignee"; // Assignee, Reviewer, Observer
+
+		public DateTime AssignedDate { get; set; } = DateTime.Now;
+
+		[Required]
+		public Guid AssignedByUserId { get; set; }
+
+		public bool IsActive { get; set; } = true;
+
+		// Foreign key
+		[ForeignKey("WorkTaskId")]
+		public virtual WorkTask WorkTask { get; set; }
+	}
+
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\TaskObjective.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class TaskObjective
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid WorkTaskId { get; set; }
+
+		[Required]
+		[StringLength(500)]
+		public string Title { get; set; }
+
+		[StringLength(1000)]
+		public string Description { get; set; }
+
+		public bool IsCompleted { get; set; } = false;
+
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+		public DateTime? CompletedDate { get; set; }
+
+		public int DisplayOrder { get; set; } = 0;
+
+		[Required]
+		public Guid CreatedByUserId { get; set; }
+
+		public Guid CompletedByUserId { get; set; }
+
+		// Foreign key
+		[ForeignKey("WorkTaskId")]
+		public virtual WorkTask WorkTask { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\WorkArea.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class WorkArea
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid ProjectId { get; set; }
+
+		[Required]
+		[StringLength(200)]
+		public string Name { get; set; }
+
+		[StringLength(1000)]
+		public string Description { get; set; }
+
+		public int DisplayOrder { get; set; } = 0;
+
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+		[Required]
+		public Guid CreatedByUserId { get; set; }
+
+		public bool IsActive { get; set; } = true;
+
+		// Foreign key
+		[ForeignKey("ProjectId")]
+		public virtual Project Project { get; set; }
+
+		// Navigation properties
+		public virtual ICollection<WorkTask> WorkTasks { get; set; } = new List<WorkTask>();
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Entities\WorkTask.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Formats.Tar;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Entities
+{
+	public class WorkTask
+	{
+		[Key]
+		public Guid Id { get; set; }
+
+		public Guid WorkAreaId { get; set; }
+
+		[Required]
+		[StringLength(200)]
+		public string Title { get; set; }
+
+		[StringLength(2000)]
+		public string Description { get; set; }
+
+		[StringLength(50)]
+		public string Priority { get; set; } = "Medium"; // Low, Medium, High, Urgent
+
+		[StringLength(50)]
+		public string Status { get; set; } = "Todo"; // Todo, InProgress, Review, Done
+
+		public DateTime? StartDate { get; set; }
+
+		public DateTime? EndDate { get; set; }
+
+		public DateTime? DueDate { get; set; }
+
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+		public DateTime? CompletedDate { get; set; }
+
+		public int DisplayOrder { get; set; } = 0;
+
+		[Range(0, 100)]
+		public int Progress { get; set; } = 0; // Phần trăm hoàn thành
+
+		// Thông tin người tạo task
+		[Required]
+		public Guid CreatedByUserId { get; set; }
+
+		[StringLength(200)]
+		public string CreatedByUserName { get; set; }
+
+		// Foreign key
+		[ForeignKey("WorkAreaId")]
+		public virtual WorkArea WorkArea { get; set; }
+
+		// Navigation properties
+		public virtual ICollection<TaskObjective> TaskObjectives { get; set; } = new List<TaskObjective>();
+		public virtual ICollection<TaskMember> TaskMembers { get; set; } = new List<TaskMember>();
+		public virtual ICollection<TaskFile> TaskFiles { get; set; } = new List<TaskFile>();
+		public virtual ICollection<TaskAction> TaskActions { get; set; } = new List<TaskAction>();
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Migrations\20250530090102_InitialCreate.cs
+```cs
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace Tasco.TaskService.Repository.Migrations
+{
+    /// <inheritdoc />
+    public partial class InitialCreate : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedByUserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectMembers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    JoinedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectMembers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectMembers_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkAreas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkAreas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkAreas_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkTasks",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkAreaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    Priority = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CompletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    Progress = table.Column<int>(type: "int", nullable: false),
+                    CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedByUserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkTasks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkTasks_WorkAreas_WorkAreaId",
+                        column: x => x.WorkAreaId,
+                        principalTable: "WorkAreas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TaskActions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkTaskId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    ActionType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
+                    OldValue = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    NewValue = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    ActionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskActions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaskActions_WorkTasks_WorkTaskId",
+                        column: x => x.WorkTaskId,
+                        principalTable: "WorkTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TaskFiles",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkTaskId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    FilePath = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    FileType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    UploadedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UploadedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UploadedByUserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskFiles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaskFiles_WorkTasks_WorkTaskId",
+                        column: x => x.WorkTaskId,
+                        principalTable: "WorkTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TaskMembers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkTaskId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    UserEmail = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    AssignedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AssignedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskMembers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaskMembers_WorkTasks_WorkTaskId",
+                        column: x => x.WorkTaskId,
+                        principalTable: "WorkTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TaskObjectives",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkTaskId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CompletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CompletedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskObjectives", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TaskObjectives_WorkTasks_WorkTaskId",
+                        column: x => x.WorkTaskId,
+                        principalTable: "WorkTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectMembers_ProjectId_UserId",
+                table: "ProjectMembers",
+                columns: new[] { "ProjectId", "UserId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectMembers_UserId",
+                table: "ProjectMembers",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_CreatedByUserId",
+                table: "Projects",
+                column: "CreatedByUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskActions_ActionDate",
+                table: "TaskActions",
+                column: "ActionDate");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskActions_UserId",
+                table: "TaskActions",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskActions_WorkTaskId",
+                table: "TaskActions",
+                column: "WorkTaskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskFiles_WorkTaskId",
+                table: "TaskFiles",
+                column: "WorkTaskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskMembers_UserId",
+                table: "TaskMembers",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskMembers_WorkTaskId_UserId",
+                table: "TaskMembers",
+                columns: new[] { "WorkTaskId", "UserId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskObjectives_WorkTaskId",
+                table: "TaskObjectives",
+                column: "WorkTaskId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkAreas_ProjectId",
+                table: "WorkAreas",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkTasks_CreatedByUserId",
+                table: "WorkTasks",
+                column: "CreatedByUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkTasks_WorkAreaId",
+                table: "WorkTasks",
+                column: "WorkAreaId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "ProjectMembers");
+
+            migrationBuilder.DropTable(
+                name: "TaskActions");
+
+            migrationBuilder.DropTable(
+                name: "TaskFiles");
+
+            migrationBuilder.DropTable(
+                name: "TaskMembers");
+
+            migrationBuilder.DropTable(
+                name: "TaskObjectives");
+
+            migrationBuilder.DropTable(
+                name: "WorkTasks");
+
+            migrationBuilder.DropTable(
+                name: "WorkAreas");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Migrations\20250530090102_InitialCreate.Designer.cs
+```cs
+﻿// <auto-generated />
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Tasco.TaskService.Repository.Entities;
+
+#nullable disable
+
+namespace Tasco.TaskService.Repository.Migrations
+{
+    [DbContext(typeof(TaskManagementDbContext))]
+    [Migration("20250530090102_InitialCreate")]
+    partial class InitialCreate
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedByUserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.ProjectMember", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("JoinedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("ProjectId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("ProjectMembers");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ActionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ActionType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("NewValue")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("OldValue")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActionDate");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WorkTaskId");
+
+                    b.ToTable("TaskActions");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskFile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("UploadedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UploadedByUserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("UploadedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkTaskId");
+
+                    b.ToTable("TaskFiles");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskMember", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AssignedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AssignedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WorkTaskId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("TaskMembers");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskObjective", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CompletedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CompletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkTaskId");
+
+                    b.ToTable("TaskObjectives");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("WorkAreas");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CompletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedByUserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Priority")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("WorkAreaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("WorkAreaId");
+
+                    b.ToTable("WorkTasks");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.ProjectMember", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.Project", "Project")
+                        .WithMany("ProjectMembers")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskActions")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskFile", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskFiles")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskMember", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskMembers")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskObjective", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskObjectives")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.Project", "Project")
+                        .WithMany("WorkAreas")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkArea", "WorkArea")
+                        .WithMany("WorkTasks")
+                        .HasForeignKey("WorkAreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkArea");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Project", b =>
+                {
+                    b.Navigation("ProjectMembers");
+
+                    b.Navigation("WorkAreas");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
+                {
+                    b.Navigation("WorkTasks");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
+                {
+                    b.Navigation("TaskActions");
+
+                    b.Navigation("TaskFiles");
+
+                    b.Navigation("TaskMembers");
+
+                    b.Navigation("TaskObjectives");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Migrations\TaskManagementDbContextModelSnapshot.cs
+```cs
+﻿// <auto-generated />
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Tasco.TaskService.Repository.Entities;
+
+#nullable disable
+
+namespace Tasco.TaskService.Repository.Migrations
+{
+    [DbContext(typeof(TaskManagementDbContext))]
+    partial class TaskManagementDbContextModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Project", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedByUserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.ProjectMember", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("JoinedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("ProjectId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("ProjectMembers");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ActionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ActionType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("NewValue")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("OldValue")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActionDate");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WorkTaskId");
+
+                    b.ToTable("TaskActions");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskFile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("UploadedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UploadedByUserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("UploadedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkTaskId");
+
+                    b.ToTable("TaskFiles");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskMember", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AssignedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AssignedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WorkTaskId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("TaskMembers");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskObjective", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CompletedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CompletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("WorkTaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkTaskId");
+
+                    b.ToTable("TaskObjectives");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("WorkAreas");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CompletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedByUserName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Priority")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<Guid>("WorkAreaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("WorkAreaId");
+
+                    b.ToTable("WorkTasks");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.ProjectMember", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.Project", "Project")
+                        .WithMany("ProjectMembers")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskActions")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskFile", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskFiles")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskMember", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskMembers")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskObjective", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
+                        .WithMany("TaskObjectives")
+                        .HasForeignKey("WorkTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkTask");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.Project", "Project")
+                        .WithMany("WorkAreas")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
+                {
+                    b.HasOne("Tasco.TaskService.Repository.Entities.WorkArea", "WorkArea")
+                        .WithMany("WorkTasks")
+                        .HasForeignKey("WorkAreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkArea");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Project", b =>
+                {
+                    b.Navigation("ProjectMembers");
+
+                    b.Navigation("WorkAreas");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
+                {
+                    b.Navigation("WorkTasks");
+                });
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
+                {
+                    b.Navigation("TaskActions");
+
+                    b.Navigation("TaskFiles");
+
+                    b.Navigation("TaskMembers");
+
+                    b.Navigation("TaskObjectives");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Paginate\IPaginate.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Paginate
+{
+    public interface IPaginate<TResult>
+    {
+        int Size { get; }
+        int Page { get; }
+        int Total { get; }
+        int TotalPages { get; }
+        IList<TResult> Items { get; }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Paginate\Paginate.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Paginate
+{
+    public class Paginate<TResult> : IPaginate<TResult>
+    {
+        public int Size { get; set; }
+        public int Page { get; set; }
+        public int Total { get; set; }
+        public int TotalPages { get; set; }
+        public IList<TResult> Items { get; set; }
+
+        public Paginate(IEnumerable<TResult> source, int page, int size, int firstPage)
+        {
+            var enumerable = source as TResult[] ?? source.ToArray();
+            if (firstPage > page)
+            {
+                throw new ArgumentException($"Page ({page}) must be greater or equal than firstPage ({firstPage})");
+            }
+
+            if (source is IQueryable<TResult> queryable)
+            {
+                Page = page;
+                Size = size;
+                Total = queryable.Count();
+                Items = queryable.Skip((page - firstPage) * size).Take(size).ToList();
+                TotalPages = (int)Math.Ceiling(Total / (double)Size);
+            }
+            else
+            {
+                Page = page;
+                Size = size;
+                Total = enumerable.Length;
+                Items = enumerable.Skip((page - firstPage) * size).Take(size).ToList();
+                TotalPages = (int)Math.Ceiling(Total / (double)Size);
+            }
+        }
+
+        public Paginate()
+        {
+            Items = Array.Empty<TResult>();
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Paginate\PaginateExtension.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Paginate
+{
+    public static class PaginateExtension
+    {
+        public static async Task<IPaginate<T>> ToPaginateAsync<T>(this IQueryable<T> queryable, int page, int size, int firstPage = 1)
+        {
+            if (page < firstPage) page = firstPage;
+            var total = await queryable.CountAsync();
+            var items = await queryable.Skip((page - firstPage) * size).Take(size).ToListAsync();
+            var totalPages = (int)Math.Ceiling(total / (double)size);
+            return new Paginate<T>
+            {
+                Page = page,
+                Size = size,
+                Total = total,
+                Items = items,
+                TotalPages = totalPages
+            };
+        }
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Repositories\GenericRepository.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.TaskService.Repository.Paginate;
+
+namespace Tasco.TaskService.Repository.Repositories
+{
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        protected readonly DbContext _dbContext;
+        protected readonly DbSet<T> _dbSet;
+
+        public GenericRepository(DbContext context)
+        {
+            _dbContext = context;
+            _dbSet = context.Set<T>();
+        }
+
+        #region Gett Async
+
+        public virtual async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, bool enableSplitQuery = false)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+
+            if (enableSplitQuery) query = query.AsSplitQuery();
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().FirstOrDefaultAsync();
+
+            return await query.AsNoTracking().FirstOrDefaultAsync();
+        }
+
+        public virtual async Task<TResult> SingleOrDefaultAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).FirstOrDefaultAsync();
+
+            return await query.AsNoTracking().Select(selector).FirstOrDefaultAsync();
+        }
+
+        public virtual async Task<ICollection<T>> GetListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().ToListAsync();
+
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public virtual async Task<ICollection<TResult>> GetListAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).ToListAsync();
+
+            return await query.AsNoTracking().Select(selector).ToListAsync();
+        }
+
+        public Task<IPaginate<T>> GetPagingListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1,
+            int size = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+            if (predicate != null) query = query.Where(predicate);
+            query = query.AsNoTracking();
+            if (orderBy != null) return orderBy(query).ToPaginateAsync(page, size, 1);
+            return query.AsNoTracking().ToPaginateAsync(page, size, 1);
+        }
+
+        public Task<IPaginate<TResult>> GetPagingListAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1, int size = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+            if (predicate != null) query = query.Where(predicate);
+            if (orderBy != null) return orderBy(query).Select(selector).ToPaginateAsync(page, size, 1);
+            return query.AsNoTracking().Select(selector).ToPaginateAsync(page, size, 1);
+        }
+
+        #endregion
+
+        #region Insert
+
+        public async Task InsertAsync(T entity)
+        {
+            if (entity == null) return;
+            await _dbSet.AddAsync(entity);
+        }
+
+        public async Task InsertRangeAsync(IEnumerable<T> entities)
+        {
+            await _dbSet.AddRangeAsync(entities);
+        }
+
+        #endregion
+
+        #region Update
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<T> entities)
+        {
+            _dbSet.UpdateRange(entities);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
+
+        #endregion
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Repositories\IGenericRepository.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.TaskService.Repository.Paginate;
+
+namespace Tasco.TaskService.Repository.Repositories
+{
+    public interface IGenericRepository<T>
+    {
+        #region Get Async
+
+        Task<T> SingleOrDefaultAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            bool enableSplitQuery = false);
+
+        Task<TResult> SingleOrDefaultAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<ICollection<T>> GetListAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<ICollection<TResult>> GetListAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<IPaginate<T>> GetPagingListAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            int page = 1,
+            int size = 10);
+
+        Task<IPaginate<TResult>> GetPagingListAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            int page = 1,
+            int size = 10);
+
+        #endregion
+
+        #region Insert
+
+        Task InsertAsync(T entity);
+
+        Task InsertRangeAsync(IEnumerable<T> entities);
+
+        #endregion
+
+        #region Update
+
+        void Update(T entity);
+
+        void UpdateRange(IEnumerable<T> entities);
+
+        #endregion
+
+        void Delete(T entity);
+        void DeleteRange(IEnumerable<T> entities);
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\Repositories\IGenericRepositoryFactory.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Repository.Repositories
+{
+	public interface IGenericRepositoryFactory
+	{
+		IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\UnitOfWork\IUnitOfWork.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.TaskService.Repository.Repositories;
+
+namespace Tasco.TaskService.Repository.UnitOfWork
+{
+	public interface IUnitOfWork : IGenericRepositoryFactory, IDisposable
+	{
+		int Commit();
+
+		Task<int> CommitAsync();
+	}
+
+	public interface IUnitOfWork<TContext> : IUnitOfWork where TContext : DbContext
+	{
+		TContext Context { get; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Repository\UnitOfWork\UnitOfWork.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.TaskService.Repository.Repositories;
+
+namespace Tasco.TaskService.Repository.UnitOfWork
+{
+	public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext
+	{
+		public TContext Context { get; }
+		private Dictionary<Type, object> _repositories;
+
+		public UnitOfWork(TContext context)
+		{
+			Context = context;
+		}
+
+		public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class
+		{
+			_repositories ??= new Dictionary<Type, object>();
+			if (_repositories.TryGetValue(typeof(TEntity), out object repository))
+			{
+				return (IGenericRepository<TEntity>)repository;
+			}
+
+			repository = new GenericRepository<TEntity>(Context);
+			_repositories.Add(typeof(TEntity), repository);
+			return (IGenericRepository<TEntity>)repository;
+		}
+
+		public void Dispose()
+		{
+			Context?.Dispose();
+		}
+
+		public int Commit()
+		{
+			TrackChanges();
+			return Context.SaveChanges();
+		}
+
+		public async Task<int> CommitAsync()
+		{
+			TrackChanges();
+			return await Context.SaveChangesAsync();
+		}
+
+		private void TrackChanges()
+		{
+			var validationErrors = Context.ChangeTracker.Entries<IValidatableObject>()
+				.SelectMany(e => e.Entity.Validate(null))
+				.Where(e => e != ValidationResult.Success)
+				.ToArray();
+			if (validationErrors.Any())
+			{
+				var exceptionMessage = string.Join(Environment.NewLine,
+					validationErrors.Select(error => $"Properties {error.MemberNames} Error: {error.ErrorMessage}"));
+				throw new Exception(exceptionMessage);
+			}
+		}
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\BaseService.cs
+```cs
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Repository.UnitOfWork;
+
+
+namespace Tasco.TaskService.Service
+{
+	public abstract class BaseService<T> where T : class
+	{
+		protected IUnitOfWork<TaskManagementDbContext> _unitOfWork;
+		protected ILogger<T> _logger;
+		protected IMapper _mapper;
+		protected IHttpContextAccessor _httpContextAccessor;
+
+		public BaseService(IUnitOfWork<TaskManagementDbContext> unitOfWork, ILogger<T> logger, IMapper mapper,
+			IHttpContextAccessor httpContextAccessor)
+		{
+			_unitOfWork = unitOfWork;
+			_logger = logger;
+			_mapper = mapper;
+			_httpContextAccessor = httpContextAccessor;
+		}
+
+		protected string GetUsernameFromJwt()
+		{
+			string username = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+			return username;
+		}
+
+		protected string GetRoleFromJwt()
+		{
+			string role = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
+			return role;
+		}
+
+		protected string GetBrandIdFromJwt()
+		{
+			return _httpContextAccessor?.HttpContext?.User?.FindFirstValue("userId");
+		}
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\BusinessModels\ProjectBusinessModel.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+
+namespace Tasco.TaskService.Service.BusinessModels
+{
+	public class ProjectBusinessModel
+	{
+		public Guid Id { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public DateTime CreatedDate { get; set; }
+		public DateTime? StartDate { get; set; }
+		public DateTime? EndDate { get; set; }
+		public string Status { get; set; }
+		public Guid CreatedByUserId { get; set; }
+		public string CreatedByUserName { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\BusinessModels\ProjectMemberBusinessModel.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Service.BusinessModels
+{
+	public class ProjectMemberBusinessModel
+	{
+		public Guid Id { get; set; }
+		public Guid ProjectId { get; set; }
+		public Guid UserId { get; set; }
+		public string UserName { get; set; }
+		public string Role { get; set; }
+		public DateTime JoinedDate { get; set; }
+		public bool IsActive { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\BusinessModels\WorkAreaBusinessModel.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.TaskService.Service.BusinessModels
+{
+	public class WorkAreaBusinessModel
+	{
+		public Guid Id { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public Guid ProjectId { get; set; }
+		public DateTime CreatedDate { get; set; }
+		public bool IsActive { get; set; }
+		public int TaskCount { get; set; }
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\Implementations\ProjectService.cs
+```cs
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Repository.Paginate;
+using Tasco.TaskService.Repository.UnitOfWork;
+using Tasco.TaskService.Service.BusinessModels;
+using Tasco.TaskService.Service.Interfaces;
+
+namespace Tasco.TaskService.Service.Implementations
+{
+	public class ProjectService : BaseService<ProjectService>, IProjectService
+	{
+		public ProjectService(IUnitOfWork<TaskManagementDbContext> unitOfWork, ILogger<ProjectService> logger, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(unitOfWork, logger, mapper, httpContextAccessor)
+		{
+		}
+
+		public async Task<ProjectBusinessModel> CreateProject(ProjectBusinessModel request)
+		{
+			var project = _mapper.Map<Project>(request);
+
+			await _unitOfWork.GetRepository<Project>().InsertAsync(project);
+			await _unitOfWork.CommitAsync();
+			return _mapper.Map<ProjectBusinessModel>(project);
+		}
+
+		public async Task<IPaginate<ProjectBusinessModel>> GetAllProjects(int pageSize, int pageIndex, string search)
+		{
+			if (pageSize <= 0 || pageIndex < 0)
+			{
+				throw new ArgumentOutOfRangeException("Page size must be greater than zero and page index cannot be negative.");
+			}
+
+			var repository = await _unitOfWork.GetRepository<Project>().GetPagingListAsync
+				(
+				predicate: string.IsNullOrEmpty(search) ? null : p => p.Name.Contains(search) || p.Description.Contains(search),
+				orderBy: p => p.OrderByDescending(x => x.CreatedDate),
+				include: p => p.Include(x => x.ProjectMembers).Include(x => x.WorkAreas),
+				page: pageIndex,
+				size: pageSize
+				);
+			var mapped = _mapper.Map<IPaginate<ProjectBusinessModel>>(repository);
+			return mapped;
+		}
+
+		public async Task<ProjectBusinessModel> GetProjectById(Guid projectId)
+		{
+			var project = await _unitOfWork.GetRepository<Project>().SingleOrDefaultAsync(
+				predicate: p => p.Id == projectId,
+				include: p => p.Include(x => x.ProjectMembers).Include(x => x.WorkAreas));
+
+			// Map Entity to BusinessModel
+			return _mapper.Map<ProjectBusinessModel>(project);
+		}
+
+		public async Task<ProjectBusinessModel> UpdateProject(ProjectBusinessModel request)
+		{
+			var project = _mapper.Map<Project>(request);
+
+			_unitOfWork.GetRepository<Project>().Update(project);
+			await _unitOfWork.CommitAsync();
+			return _mapper.Map<ProjectBusinessModel>(project);
+		}
+	}
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\Interfaces\IProjectService.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Repository.Paginate;
+using Tasco.TaskService.Service.BusinessModels;
+
+namespace Tasco.TaskService.Service.Interfaces
+{
+    public interface IProjectService
+    {
+		Task<ProjectBusinessModel> GetProjectById(Guid projectId);
+		Task<IPaginate<ProjectBusinessModel>> GetAllProjects(int pageSize, int pageIndex, string search);
+		Task<ProjectBusinessModel> CreateProject(ProjectBusinessModel request);
+		Task<ProjectBusinessModel> UpdateProject(ProjectBusinessModel request);
+    }
+}
+
+```
+
+### services\Tasco.TaskService\Tasco.TaskService.Service\Mapping\ProjectMappingProfile.cs
+```cs
+﻿using AutoMapper;
+using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Service.BusinessModels;
+using Tasco.TaskService.Repository.Paginate;
+
+namespace Tasco.TaskService.Service.Mapping
+{
+	public class ProjectMappingProfile : Profile
+	{
+		public ProjectMappingProfile()
+		{
+			// Supporting entities
+			CreateMap<ProjectMember, ProjectMemberBusinessModel>().ReverseMap();
+			CreateMap<WorkArea, WorkAreaBusinessModel>().ReverseMap();
+
+			// Paginated results
+			CreateMap<IPaginate<Project>, IPaginate<ProjectBusinessModel>>()
+				.ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items));
+
+		}
+	}
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.API\Program.cs
+```cs
+using DotNetEnv;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Tasco.UserAuthService.API.Mapping;
+using Tasco.UserAuthService.API.Middlewares;
+using Tasco.UserAuthService.Repository;
+using Tasco.UserAuthService.Repository.UnitOfWork;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var currentDir = Directory.GetCurrentDirectory();
+var relativePath = Path.Combine(currentDir, "../../../.env");
+var envPath = Path.GetFullPath(relativePath);
+if (!File.Exists(envPath))
+{
+    throw new FileNotFoundException($"Environment file not found at path: {envPath}");
+}
+Env.Load(envPath);
+builder.Configuration.AddEnvironmentVariables();
+var connectionString = builder.Configuration.GetConnectionString("TascoAuth") ??
+                       throw new InvalidOperationException("Connection string 'TascoAuth' not found.");
+// Add services to the container.
+
+builder.Services.AddControllers();
+
+//-------------------- Swagger --------------------
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Tasco Auth API", Version = "v1" });
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        BearerFormat = "JWT",
+        Description = "Example: \"Bearer (Token here)\"",
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
+                },
+                Scheme = "Oauth2",
+                Name = JwtBearerDefaults.AuthenticationScheme,
+                In = ParameterLocation.Header
+            },
+            new List<string>()
+        }
+    });
+});
+
+//-------------------- Database --------------------
+builder.Services.AddDbContext<TascoAuthDBContext>(options =>
+               options.UseSqlServer(builder.Configuration.GetConnectionString("TascoAuth")));
+
+//-------------------- AutoMapper --------------------
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+
+//-------------------- UnitOfWork --------------------
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+//-------------------- Service --------------------
+
+//-------------------- Cors --------------------
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+//-------------------- Authentication --------------------
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddRoles<IdentityRole>()
+                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("Tasco")
+                .AddEntityFrameworkStores<TascoAuthDBContext>()
+                .AddDefaultTokenProviders();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 8;
+    options.Password.RequiredUniqueChars = 1;
+    options.SignIn.RequireConfirmedEmail = true;
+});
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidAudience = builder.Configuration["JWT:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
+    };
+});
+
+var app = builder.Build();
+
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleware>();
+app.MapControllers();
+
+app.Run();
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.API\Configure\ExpressionExtensions.cs
+```cs
+﻿using System.Linq.Expressions;
+
+namespace Tasco.UserAuthService.API.Configure
+{
+    public static class ExpressionExtensions
+    {
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+        {
+            var parameter = Expression.Parameter(typeof(T));
+
+            var visitor = new ReplacingExpressionVisitor();
+            visitor.Add(expr1.Parameters[0], parameter);
+            visitor.Add(expr2.Parameters[0], parameter);
+
+            var combined = visitor.Visit(Expression.AndAlso(expr1.Body, expr2.Body));
+
+            return Expression.Lambda<Func<T, bool>>(combined, parameter);
+        }
+
+        private class ReplacingExpressionVisitor : ExpressionVisitor
+        {
+            private readonly Dictionary<Expression, Expression> _replacements;
+
+            public ReplacingExpressionVisitor()
+            {
+                _replacements = new Dictionary<Expression, Expression>();
+            }
+
+            public void Add(Expression original, Expression replacement)
+            {
+                _replacements[original] = replacement;
+            }
+
+            public override Expression Visit(Expression node)
+            {
+                if (node != null && _replacements.TryGetValue(node, out var replacement))
+                {
+                    return replacement;
+                }
+
+                return base.Visit(node);
+            }
+        }
+    }
+}
+
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.API\Mapping\AutoMapperProfiles.cs
+```cs
+﻿using AutoMapper;
+
+namespace Tasco.UserAuthService.API.Mapping
+{
+    public class AutoMapperProfiles : Profile
+    {
+        public AutoMapperProfiles()
+        {
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.API\Middlewares\ExceptionMiddleware.cs
+```cs
+﻿using Microsoft.AspNetCore.Diagnostics;
+using System.Net;
+
+namespace Tasco.UserAuthService.API.Middlewares
+{
+    public class ExceptionMiddleware
+    {
+        private readonly ILogger<ExceptionHandlerMiddleware> logger;
+        private readonly RequestDelegate next;
+
+        public ExceptionMiddleware(
+            ILogger<ExceptionHandlerMiddleware> logger,
+            RequestDelegate next)
+        {
+            this.logger = logger;
+            this.next = next;
+        }
+        public async Task InvokeAsync(HttpContext httpContext)
+        {
+            try
+            {
+                if (logger.IsEnabled(LogLevel.Debug))
+                {
+                    logger.LogDebug("Processing request: {Method} {Path}", httpContext.Request.Method, httpContext.Request.Path);
+                }
+                await next(httpContext);
+            }
+            catch (Exception ex)
+            {
+                var errorId = Guid.NewGuid();
+                //log this exception
+                logger.LogError(ex, $"{errorId} : {ex.Message}");
+                //return custom error response
+                httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                httpContext.Response.ContentType = "application/json";
+                var error = new
+                {
+                    Id = errorId,
+                    ErrorMessage = "Something went wrong. Please contact support."
+                };
+                await httpContext.Response.WriteAsJsonAsync(error);
+
+            }
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\TascoAuthDBContext.cs
+```cs
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.UserAuthService.Repository.DataSeedings;
+
+namespace Tasco.UserAuthService.Repository
+{
+    public class TascoAuthDBContext : IdentityDbContext
+    {
+        public TascoAuthDBContext(DbContextOptions<TascoAuthDBContext> options) : base(options)
+        {
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.RoleData();
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\DataSeedings\RoleDataSeeding.cs
+```cs
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.UserAuthService.Repository.DataSeedings
+{
+    public static class RoleDataSeeding
+    {
+        private const string UserRoleId = "62f344b0-8cc9-4e78-9047-57af74c367ac";
+        private const string AdminRoleId = "b4fefe26-a899-4611-90de-cdf797927add";
+        public static void RoleData(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole() { Id = UserRoleId, ConcurrencyStamp = UserRoleId, Name = "User", NormalizedName = "User".ToUpper() },
+                new IdentityRole() { Id = AdminRoleId, ConcurrencyStamp = AdminRoleId, Name = "Admin", NormalizedName = "Admin".ToUpper() }
+            );
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Migrations\20250529153107_InitialCreate.cs
+```cs
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace Tasco.UserAuthService.Repository.Migrations
+{
+    /// <inheritdoc />
+    public partial class InitialCreate : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "AspNetRoles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "62f344b0-8cc9-4e78-9047-57af74c367ac", "62f344b0-8cc9-4e78-9047-57af74c367ac", "User", "USER" },
+                    { "b4fefe26-a899-4611-90de-cdf797927add", "b4fefe26-a899-4611-90de-cdf797927add", "Admin", "ADMIN" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "RoleNameIndex",
+                table: "AspNetRoles",
+                column: "NormalizedName",
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId",
+                table: "AspNetUserRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Migrations\20250529153107_InitialCreate.Designer.cs
+```cs
+﻿// <auto-generated />
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Tasco.UserAuthService.Repository;
+
+#nullable disable
+
+namespace Tasco.UserAuthService.Repository.Migrations
+{
+    [DbContext(typeof(TascoAuthDBContext))]
+    [Migration("20250529153107_InitialCreate")]
+    partial class InitialCreate
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "62f344b0-8cc9-4e78-9047-57af74c367ac",
+                            ConcurrencyStamp = "62f344b0-8cc9-4e78-9047-57af74c367ac",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "b4fefe26-a899-4611-90de-cdf797927add",
+                            ConcurrencyStamp = "b4fefe26-a899-4611-90de-cdf797927add",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Migrations\TascoAuthDBContextModelSnapshot.cs
+```cs
+﻿// <auto-generated />
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Tasco.UserAuthService.Repository;
+
+#nullable disable
+
+namespace Tasco.UserAuthService.Repository.Migrations
+{
+    [DbContext(typeof(TascoAuthDBContext))]
+    partial class TascoAuthDBContextModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "62f344b0-8cc9-4e78-9047-57af74c367ac",
+                            ConcurrencyStamp = "62f344b0-8cc9-4e78-9047-57af74c367ac",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "b4fefe26-a899-4611-90de-cdf797927add",
+                            ConcurrencyStamp = "b4fefe26-a899-4611-90de-cdf797927add",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Paginate\IPaginate.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.UserAuthService.Repository.Paginate
+{
+    public interface IPaginate<TResult>
+    {
+        int Size { get; }
+        int Page { get; }
+        int Total { get; }
+        int TotalPages { get; }
+        IList<TResult> Items { get; }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Paginate\Paginate.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.UserAuthService.Repository.Paginate
+{
+    public class Paginate<TResult> : IPaginate<TResult>
+    {
+        public int Size { get; set; }
+        public int Page { get; set; }
+        public int Total { get; set; }
+        public int TotalPages { get; set; }
+        public IList<TResult> Items { get; set; }
+
+        public Paginate(IEnumerable<TResult> source, int page, int size, int firstPage)
+        {
+            var enumerable = source as TResult[] ?? source.ToArray();
+            if (firstPage > page)
+            {
+                throw new ArgumentException($"Page ({page}) must be greater or equal than firstPage ({firstPage})");
+            }
+
+            if (source is IQueryable<TResult> queryable)
+            {
+                Page = page;
+                Size = size;
+                Total = queryable.Count();
+                Items = queryable.Skip((page - firstPage) * size).Take(size).ToList();
+                TotalPages = (int)Math.Ceiling(Total / (double)Size);
+            }
+            else
+            {
+                Page = page;
+                Size = size;
+                Total = enumerable.Length;
+                Items = enumerable.Skip((page - firstPage) * size).Take(size).ToList();
+                TotalPages = (int)Math.Ceiling(Total / (double)Size);
+            }
+        }
+
+        public Paginate()
+        {
+            Items = Array.Empty<TResult>();
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Paginate\PaginateExtension.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.UserAuthService.Repository.Paginate
+{
+    public static class PaginateExtension
+    {
+        public static async Task<IPaginate<T>> ToPaginateAsync<T>(this IQueryable<T> queryable, int page, int size, int firstPage = 1)
+        {
+            if (page < firstPage) page = firstPage;
+            var total = await queryable.CountAsync();
+            var items = await queryable.Skip((page - firstPage) * size).Take(size).ToListAsync();
+            var totalPages = (int)Math.Ceiling(total / (double)size);
+            return new Paginate<T>
+            {
+                Page = page,
+                Size = size,
+                Total = total,
+                Items = items,
+                TotalPages = totalPages
+            };
+        }
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Repositories\GenericRepository.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.UserAuthService.Repository.Paginate;
+
+namespace Tasco.UserAuthService.Repository.Repositories
+{
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        protected readonly DbContext _dbContext;
+        protected readonly DbSet<T> _dbSet;
+
+        public GenericRepository(DbContext context)
+        {
+            _dbContext = context;
+            _dbSet = context.Set<T>();
+        }
+
+        #region Gett Async
+
+        public virtual async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, bool enableSplitQuery = false)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+
+            if (enableSplitQuery) query = query.AsSplitQuery();
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().FirstOrDefaultAsync();
+
+            return await query.AsNoTracking().FirstOrDefaultAsync();
+        }
+
+        public virtual async Task<TResult> SingleOrDefaultAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).FirstOrDefaultAsync();
+
+            return await query.AsNoTracking().Select(selector).FirstOrDefaultAsync();
+        }
+
+        public virtual async Task<ICollection<T>> GetListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().ToListAsync();
+
+            return await query.AsNoTracking().ToListAsync();
+        }
+
+        public virtual async Task<ICollection<TResult>> GetListAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (include != null) query = include(query);
+
+            if (predicate != null) query = query.Where(predicate);
+
+            if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).ToListAsync();
+
+            return await query.AsNoTracking().Select(selector).ToListAsync();
+        }
+
+        public Task<IPaginate<T>> GetPagingListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1,
+            int size = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+            if (predicate != null) query = query.Where(predicate);
+            query = query.AsNoTracking();
+            if (orderBy != null) return orderBy(query).ToPaginateAsync(page, size, 1);
+            return query.AsNoTracking().ToPaginateAsync(page, size, 1);
+        }
+
+        public Task<IPaginate<TResult>> GetPagingListAsync<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1, int size = 10)
+        {
+            IQueryable<T> query = _dbSet;
+            if (include != null) query = include(query);
+            if (predicate != null) query = query.Where(predicate);
+            if (orderBy != null) return orderBy(query).Select(selector).ToPaginateAsync(page, size, 1);
+            return query.AsNoTracking().Select(selector).ToPaginateAsync(page, size, 1);
+        }
+
+        #endregion
+
+        #region Insert
+
+        public async Task InsertAsync(T entity)
+        {
+            if (entity == null) return;
+            await _dbSet.AddAsync(entity);
+        }
+
+        public async Task InsertRangeAsync(IEnumerable<T> entities)
+        {
+            await _dbSet.AddRangeAsync(entities);
+        }
+
+        #endregion
+
+        #region Update
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<T> entities)
+        {
+            _dbSet.UpdateRange(entities);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
+
+        #endregion
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\Repositories\IGenericRepository.cs
+```cs
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Tasco.UserAuthService.Repository.Paginate;
+
+namespace Tasco.UserAuthService.Repository.Repositories
+{
+    public interface IGenericRepository<T>
+    {
+        #region Get Async
+
+        Task<T> SingleOrDefaultAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            bool enableSplitQuery = false);
+
+        Task<TResult> SingleOrDefaultAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<ICollection<T>> GetListAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<ICollection<TResult>> GetListAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
+
+        Task<IPaginate<T>> GetPagingListAsync(
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            int page = 1,
+            int size = 10);
+
+        Task<IPaginate<TResult>> GetPagingListAsync<TResult>(
+            Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+            int page = 1,
+            int size = 10);
+
+        #endregion
+
+        #region Insert
+
+        Task InsertAsync(T entity);
+
+        Task InsertRangeAsync(IEnumerable<T> entities);
+
+        #endregion
+
+        #region Update
+
+        void Update(T entity);
+
+        void UpdateRange(IEnumerable<T> entities);
+
+        #endregion
+
+        void Delete(T entity);
+        void DeleteRange(IEnumerable<T> entities);
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\UnitOfWork\IUnitOfWork.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.UserAuthService.Repository.UnitOfWork
+{
+    public interface IUnitOfWork : IDisposable
+    {
+        Task SaveChangesAsync();
+    }
+}
+
+```
+
+### services\Tasco.UserAuthService\Tasco.UserAuthService.Repository\UnitOfWork\UnitOfWork.cs
+```cs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tasco.UserAuthService.Repository.UnitOfWork
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    //_context.Dispose();
+                }
+            }
+            disposed = true;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+```
