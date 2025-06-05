@@ -416,6 +416,12 @@ secrets.json
 .env.test
 .env.production
 
+# Specific .env files in services
+services/*/.env
+services/**/.env
+services/Tasco.NotificationService/Tasco.NotificationService.Worker/.env
+services/Tasco.ProjectService/Tasco.ProjectService.API/.env
+
 # SSL certificates
 *.crt
 *.key

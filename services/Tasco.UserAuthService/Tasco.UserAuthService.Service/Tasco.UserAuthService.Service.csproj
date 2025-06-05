@@ -11,8 +11,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessModels\" />
-    <Folder Include="Services\Interface\" />
+    <Folder Include="Assets\Logos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Logos\Tasco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Emails\Confirmed.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

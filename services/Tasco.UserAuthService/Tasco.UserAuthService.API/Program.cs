@@ -8,22 +8,16 @@ using Tasco.UserAuthService.API.Mapping;
 using Tasco.UserAuthService.API.Middlewares;
 using Tasco.UserAuthService.Repository;
 using Tasco.UserAuthService.Repository.UnitOfWork;
+using Tasco.UserAuthService.Repository.SMTPs.Repositories;
+using Tasco.UserAuthService.Service.Services;
+using Tasco.UserAuthService.Service.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var currentDir = Directory.GetCurrentDirectory();
-var relativePath = Path.Combine(currentDir, "../../../.env");
-var envPath = Path.GetFullPath(relativePath);
-if (!File.Exists(envPath))
-{
-    throw new FileNotFoundException($"Environment file not found at path: {envPath}");
-}
-Env.Load(envPath);
+Env.Load();
 builder.Configuration.AddEnvironmentVariables();
-var connectionString = builder.Configuration.GetConnectionString("TascoAuth") ??
-                       throw new InvalidOperationException("Connection string 'TascoAuth' not found.");
-// Add services to the container.
 
+// Add services to the container.
 builder.Services.AddControllers();
 
 //-------------------- Swagger --------------------
@@ -69,8 +63,14 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 //-------------------- UnitOfWork --------------------
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-//-------------------- Service --------------------
+//-------------------- Repository --------------------
+builder.Services.AddScoped<IEmailRepository, EmailRepository>();
 
+//-------------------- Service --------------------
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 //-------------------- Cors --------------------
 builder.Services.AddCors(options =>
 {
