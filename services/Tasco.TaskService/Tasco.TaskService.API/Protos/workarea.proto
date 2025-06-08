@@ -1,0 +1,57 @@
+ syntax = "proto3";
+
+option csharp_namespace = "Tasco.TaskService.API.Protos";
+
+package workarea;
+
+//  definition
+service WorkAreaService {
+  rpc CreateWorkArea (WorkAreaRequest) returns (WorkAreaResponse);
+  rpc DeleteWorkArea (WorkAreaRequestById) returns (Empty);
+  rpc GetAllWorkAreas (WorkAreaListRequest) returns (WorkAreaListResponse);
+  rpc GetMyWorkAreas (WorkAreaListRequest) returns (WorkAreaListResponse);
+  rpc GetWorkAreaById (WorkAreaRequestById) returns (WorkAreaResponse);
+  rpc UpdateWorkArea (UpdateWorkAreaRequest) returns (WorkAreaResponse);
+}
+
+// Request/Response messages
+message WorkAreaRequest {
+  string name = 1;
+  string description = 2;
+  string status = 3;
+}
+
+message WorkAreaRequestById {
+  string id = 1;
+}
+
+message UpdateWorkAreaRequest {
+  string id = 1;
+  WorkAreaRequest work_area = 2;
+}
+
+message WorkAreaResponse {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
+  string created_by_user_id = 5;
+  string created_by_user_name = 6;
+  string created_date = 7;
+  string modified_date = 8;
+}
+
+message WorkAreaListRequest {
+  int32 page_size = 1;
+  int32 page_index = 2;
+  string search = 3;
+}
+
+message WorkAreaListResponse {
+  repeated WorkAreaResponse work_areas = 1;
+  int32 total_count = 2;
+  int32 page_count = 3;
+  int32 current_page = 4;
+}
+
+message Empty {} 

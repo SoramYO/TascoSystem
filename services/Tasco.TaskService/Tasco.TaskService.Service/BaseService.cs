@@ -1,27 +1,24 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Tasco.TaskService.Repository.Entities;
 using Tasco.TaskService.Repository.UnitOfWork;
-
 
 namespace Tasco.TaskService.Service
 {
 	public abstract class BaseService<T> where T : class
 	{
-		protected IUnitOfWork<TaskManagementDbContext> _unitOfWork;
-		protected ILogger<T> _logger;
-		protected IMapper _mapper;
-		protected IHttpContextAccessor _httpContextAccessor;
+		protected readonly IUnitOfWork<TaskManagementDbContext> _unitOfWork;
+		protected readonly ILogger<T> _logger;
+		protected readonly IMapper _mapper;
+		protected readonly IHttpContextAccessor _httpContextAccessor;
 
-		public BaseService(IUnitOfWork<TaskManagementDbContext> unitOfWork, ILogger<T> logger, IMapper mapper,
+		protected BaseService(
+			IUnitOfWork<TaskManagementDbContext> unitOfWork,
+			ILogger<T> logger,
+			IMapper mapper,
 			IHttpContextAccessor httpContextAccessor)
 		{
 			_unitOfWork = unitOfWork;
@@ -30,16 +27,16 @@ namespace Tasco.TaskService.Service
 			_httpContextAccessor = httpContextAccessor;
 		}
 
-		protected string GetUserEmailFromJwt()
-        {
-            string email = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.Email);
-            return email;
-        }
-
-        protected string GetUserIdFromJwt()
+		protected string GetUserIdFromJwt()
 		{
-			string username = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
-			return username;
+			var userId = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+			return userId;
+		}
+
+		protected string GetUserEmailFromJwt()
+		{
+			var email = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.Email)?.Value;
+			return email;
 		}
 
 		protected string GetRoleFromJwt()
