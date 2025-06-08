@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Tasco.TaskService.API.Mapping;
 using Tasco.TaskService.Repository.Entities;
+using Tasco.TaskService.Repository.UnitOfWork;
+using Tasco.TaskService.Service.Implementations;
+using Tasco.TaskService.Service.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,10 @@ builder.Services.AddDbContext<TaskManagementDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+//DJ
+builder.Services.AddScoped(typeof(IUnitOfWork<TaskManagementDbContext>), typeof(UnitOfWork<TaskManagementDbContext>));
+builder.Services.AddScoped<IWorkAreaService, WorkAreaService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

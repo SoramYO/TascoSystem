@@ -22,94 +22,6 @@ namespace Tasco.TaskService.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Project", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CreatedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedByUserName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.ProjectMember", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("JoinedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("UserEmail")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("ProjectId", "UserId")
-                        .IsUnique();
-
-                    b.ToTable("ProjectMembers");
-                });
-
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
                 {
                     b.Property<Guid>("Id")
@@ -329,8 +241,6 @@ namespace Tasco.TaskService.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectId");
-
                     b.ToTable("WorkAreas");
                 });
 
@@ -401,17 +311,6 @@ namespace Tasco.TaskService.Repository.Migrations
                     b.ToTable("WorkTasks");
                 });
 
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.ProjectMember", b =>
-                {
-                    b.HasOne("Tasco.TaskService.Repository.Entities.Project", "Project")
-                        .WithMany("ProjectMembers")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
                 {
                     b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
@@ -456,17 +355,6 @@ namespace Tasco.TaskService.Repository.Migrations
                     b.Navigation("WorkTask");
                 });
 
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>
-                {
-                    b.HasOne("Tasco.TaskService.Repository.Entities.Project", "Project")
-                        .WithMany("WorkAreas")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
                 {
                     b.HasOne("Tasco.TaskService.Repository.Entities.WorkArea", "WorkArea")
@@ -476,13 +364,6 @@ namespace Tasco.TaskService.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("WorkArea");
-                });
-
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Project", b =>
-                {
-                    b.Navigation("ProjectMembers");
-
-                    b.Navigation("WorkAreas");
                 });
 
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkArea", b =>

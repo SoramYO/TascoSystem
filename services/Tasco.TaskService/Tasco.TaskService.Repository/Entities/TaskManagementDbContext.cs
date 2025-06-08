@@ -8,65 +8,142 @@ using System.Threading.Tasks;
 
 namespace Tasco.TaskService.Repository.Entities
 {
-	public class TaskManagementDbContext : DbContext
-	{
-		public TaskManagementDbContext(DbContextOptions<TaskManagementDbContext> options)
-			: base(options)
-		{
-		}
+    public class TaskManagementDbContext : DbContext
+    {
+        public TaskManagementDbContext(DbContextOptions<TaskManagementDbContext> options)
+            : base(options)
+        {
+        }
 
-		// DbSets
-		public DbSet<Task> Tasks { get; set; }
-		public DbSet<SubTask> SubTasks { get; set; }
-		public DbSet<Comment> Comments { get; set; }
+        public DbSet<WorkArea> WorkAreas { get; set; }
+        public DbSet<WorkTask> WorkTasks { get; set; }
+        public DbSet<TaskObjective> TaskObjectives { get; set; }
+        public DbSet<TaskMember> TaskMembers { get; set; }
+        public DbSet<TaskFile> TaskFiles { get; set; }
+        public DbSet<TaskAction> TaskActions { get; set; }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // WorkArea relationships
+            modelBuilder.Entity<WorkArea>()
+                .HasMany(wa => wa.WorkTasks)
+                .WithOne(wt => wt.WorkArea)
+                .HasForeignKey(wt => wt.WorkAreaId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // WorkTask relationships
+            modelBuilder.Entity<WorkTask>()
+                .HasMany(wt => wt.TaskObjectives)
+                .WithOne(to => to.WorkTask)
+                .HasForeignKey(to => to.WorkTaskId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<WorkTask>()
+                .HasMany(wt => wt.TaskMembers)
+                .WithOne(tm => tm.WorkTask)
+                .HasForeignKey(tm => tm.WorkTaskId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<WorkTask>()
+                .HasMany(wt => wt.TaskFiles)
+                .WithOne(tf => tf.WorkTask)
+                .HasForeignKey(tf => tf.WorkTaskId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<WorkTask>()
+                .HasMany(wt => wt.TaskActions)
+                .WithOne(ta => ta.WorkTask)
+                .HasForeignKey(ta => ta.WorkTaskId)
+                .OnDelete(DeleteBehavior.Cascade);
 
 
-			// WorkArea relationships
-			modelBuilder.Entity<Task>()
-				.HasMany(wa => wa.SubTasks)
-				.WithOne(wt => wt.Task)
-				.HasForeignKey(wt => wt.ParentTaskId)
-				.OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<WorkTask>()
+                .HasIndex(wt => wt.CreatedByUserId);
 
-			modelBuilder.Entity<Task>()
-				.HasMany(wa => wa.Comments)
-				.WithOne(wt => wt.Task)
-				.HasForeignKey(wt => wt.TaskId)
-				.OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<TaskMember>()
+                .HasIndex(tm => tm.UserId);
 
-			// Seed data (optional)
-			SeedData(modelBuilder);
-		}
+            modelBuilder.Entity<TaskMember>()
+                .HasIndex(tm => new { tm.WorkTaskId, tm.UserId })
+                .IsUnique();
 
-		private void SeedData(ModelBuilder modelBuilder)
-		{
-		}
+            modelBuilder.Entity<TaskAction>()
+                .HasIndex(ta => ta.UserId);
 
-		// Override SaveChanges để tự động thêm TaskAction khi có thay đổi
-		public override int SaveChanges()
-		{
-			return base.SaveChanges();
-		}
+            modelBuilder.Entity<TaskAction>()
+                .HasIndex(ta => ta.ActionDate);
 
-		public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-		{
-			return await base.SaveChangesAsync(cancellationToken);
-		}
+            // Seed data (optional)
+            SeedData(modelBuilder);
+        }
 
-		// Method để track changes với user context
-		public async Task<int> SaveChangesAsync(Guid currentUserId, string currentUserName, CancellationToken cancellationToken = default)
-		{
-			return await base.SaveChangesAsync(cancellationToken);
-		}
+        private void SeedData(ModelBuilder modelBuilder)
+        {
+            // Không seed user data vì user được quản lý ở Auth service
+            // Có thể seed một số data khác như default status, priority values
+        }
 
-		public int SaveChanges(Guid currentUserId, string currentUserName)
-		{
-			return base.SaveChanges();
-		}
+        // Override SaveChanges để tự động thêm TaskAction khi có thay đổi
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
 
-	}
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        // Method để track changes với user context
+        public async Task<int> SaveChangesAsync(Guid currentUserId, string currentUserName, CancellationToken cancellationToken = default)
+        {
+            TrackChanges(currentUserId, currentUserName);
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        public int SaveChanges(Guid currentUserId, string currentUserName)
+        {
+            TrackChanges(currentUserId, currentUserName);
+            return base.SaveChanges();
+        }
+
+        private void TrackChanges(Guid currentUserId, string currentUserName)
+        {
+            var entries = ChangeTracker.Entries<WorkTask>()
+                .Where(e => e.State == EntityState.Modified || e.State == EntityState.Added)
+                .ToList();
+
+            foreach (var entry in entries)
+            {
+                var entity = entry.Entity;
+                var actionType = entry.State == EntityState.Added ? "Created" : "Updated";
+
+                // Tạo TaskAction để ghi lại thay đổi
+                var taskAction = new TaskAction
+                {
+                    WorkTaskId = entity.Id,
+                    UserId = currentUserId,
+                    UserName = currentUserName,
+                    ActionType = actionType,
+                    Description = $"Task {actionType.ToLower()}",
+                    ActionDate = DateTime.Now
+                };
+
+                // Nếu là update, ghi lại các field đã thay đổi
+                if (entry.State == EntityState.Modified)
+                {
+                    var changedProperties = entry.Properties
+                        .Where(p => p.IsModified)
+                        .Select(p => p.Metadata.Name)
+                        .ToList();
+
+                    taskAction.Description = $"Task updated: {string.Join(", ", changedProperties)}";
+                }
+
+                TaskActions.Add(taskAction);
+            }
+        }
+    }
 }

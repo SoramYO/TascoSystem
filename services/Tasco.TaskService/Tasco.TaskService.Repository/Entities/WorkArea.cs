@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tasco.TaskService.Service.BusinessModels
+namespace Tasco.TaskService.Repository.Entities
 {
-	public class WorkAreaBusinessModel
-	{
+    public class WorkArea
+    {
+        [Key]
+        public Guid Id { get; set; }
+
         public Guid ProjectId { get; set; }
 
         [Required]
@@ -22,6 +26,12 @@ namespace Tasco.TaskService.Service.BusinessModels
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
+        [Required]
+        public Guid CreatedByUserId { get; set; }
+
         public bool IsActive { get; set; } = true;
+
+        // Navigation properties
+        public virtual ICollection<WorkTask> WorkTasks { get; set; } = new List<WorkTask>();
     }
 }
