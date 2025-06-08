@@ -2,7 +2,7 @@
 
 option csharp_namespace = "Tasco.TaskService.API.GrpcServices";
 
-package projectservice;
+package workareaservice;
 
 // Service definition
 service ProjectService {

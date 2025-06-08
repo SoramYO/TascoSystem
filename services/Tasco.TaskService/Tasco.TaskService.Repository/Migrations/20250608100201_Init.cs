@@ -6,54 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Tasco.TaskService.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedByUserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectMembers",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    UserEmail = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    JoinedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectMembers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProjectMembers_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateTable(
                 name: "WorkAreas",
                 columns: table => new
@@ -70,12 +27,6 @@ namespace Tasco.TaskService.Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WorkAreas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_WorkAreas_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,22 +162,6 @@ namespace Tasco.TaskService.Repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectMembers_ProjectId_UserId",
-                table: "ProjectMembers",
-                columns: new[] { "ProjectId", "UserId" },
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectMembers_UserId",
-                table: "ProjectMembers",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_CreatedByUserId",
-                table: "Projects",
-                column: "CreatedByUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_TaskActions_ActionDate",
                 table: "TaskActions",
                 column: "ActionDate");
@@ -263,11 +198,6 @@ namespace Tasco.TaskService.Repository.Migrations
                 column: "WorkTaskId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkAreas_ProjectId",
-                table: "WorkAreas",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_WorkTasks_CreatedByUserId",
                 table: "WorkTasks",
                 column: "CreatedByUserId");
@@ -281,9 +211,6 @@ namespace Tasco.TaskService.Repository.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ProjectMembers");
-
             migrationBuilder.DropTable(
                 name: "TaskActions");
 
@@ -301,9 +228,6 @@ namespace Tasco.TaskService.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "WorkAreas");
-
-            migrationBuilder.DropTable(
-                name: "Projects");
         }
     }
 }

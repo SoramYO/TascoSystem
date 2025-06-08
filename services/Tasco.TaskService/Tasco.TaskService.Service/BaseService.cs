@@ -30,7 +30,13 @@ namespace Tasco.TaskService.Service
 			_httpContextAccessor = httpContextAccessor;
 		}
 
-		protected string GetUsernameFromJwt()
+		protected string GetUserEmailFromJwt()
+        {
+            string email = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.Email);
+            return email;
+        }
+
+        protected string GetUserIdFromJwt()
 		{
 			string username = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
 			return username;
@@ -40,11 +46,6 @@ namespace Tasco.TaskService.Service
 		{
 			string role = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
 			return role;
-		}
-
-		protected string GetBrandIdFromJwt()
-		{
-			return _httpContextAccessor?.HttpContext?.User?.FindFirstValue("userId");
 		}
 	}
 }

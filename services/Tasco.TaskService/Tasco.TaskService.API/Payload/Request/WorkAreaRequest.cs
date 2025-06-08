@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Tasco.TaskService.Service.BusinessModels
+namespace Tasco.TaskService.API.Payload.Request
 {
-	public class WorkAreaBusinessModel
-	{
+    public class WorkAreaRequest
+    {
         public Guid ProjectId { get; set; }
 
         [Required]
