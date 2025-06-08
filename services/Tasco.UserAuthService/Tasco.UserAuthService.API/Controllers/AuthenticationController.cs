@@ -15,15 +15,18 @@ namespace Tasco.UserAuthService.API.Controllers
         private readonly IAuthenticationService _authenticationService;
         private readonly IMapper _mapper;
         private readonly ILogger<AuthenticationController> _logger;
+        private readonly IConfiguration _configuration;
 
         public AuthenticationController(
             IAuthenticationService authenticationService,
             IMapper mapper,
-            ILogger<AuthenticationController> logger)
+            ILogger<AuthenticationController> logger,
+            IConfiguration configuration)
         {
             _authenticationService = authenticationService;
             _mapper = mapper;
             _logger = logger;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -84,7 +87,7 @@ namespace Tasco.UserAuthService.API.Controllers
             _logger.LogInformation("Registration attempt for email: {Email}", request.Email);
 
             var registerBusiness = _mapper.Map<RegisterAccountBusiness>(request);
-            var baseUrl = $"{Request.Scheme}://{Request.Host}/api/authentication/confirm-email";
+            var baseUrl = $"{Request.Scheme}://{Request.Host}/api/authentications/confirm-email";
             
             await _authenticationService.RegisterAsync(baseUrl, registerBusiness);
 
@@ -96,65 +99,57 @@ namespace Tasco.UserAuthService.API.Controllers
         }
 
         /// <summary>
-        /// Email confirmation endpoint
+        /// Email confirmation endpoint - redirects to frontend with status
         /// </summary>
         /// <param name="userId">User ID from email confirmation link</param>
         /// <param name="token">Confirmation token from email</param>
-        /// <returns>Email confirmation result</returns>
+        /// <returns>Redirect to frontend with confirmation status</returns>
         [HttpGet("confirm-email")]
-        [ProducesResponseType(typeof(ApiResponse<ConfirmEmailResponse>), 200)]
-        [ProducesResponseType(typeof(ApiResponse<object>), 400)]
-        [ProducesResponseType(typeof(ApiResponse<object>), 422)]
-        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
         public async Task<IActionResult> ConfirmEmail([FromQuery] string userId, [FromQuery] string token)
         {
+            var frontendBaseUrl = _configuration["Frontend:BaseUrl"];
+            var confirmationPath = _configuration["Frontend:EmailConfirmationPath"];
+            
+            if (string.IsNullOrEmpty(frontendBaseUrl))
+            {
+                frontendBaseUrl = "http://localhost:3000"; // Default fallback
+            }
+            
+            if (string.IsNullOrEmpty(confirmationPath))
+            {
+                confirmationPath = "/auth/email-confirmation"; // Default fallback
+            }
+
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
             {
-                return BadRequest(ApiResponse<object>.ErrorResponse("User ID and token are required"));
+                _logger.LogWarning("Email confirmation failed: Missing userId or token");
+                var errorUrl = $"{frontendBaseUrl}{confirmationPath}?status=error&message=Invalid confirmation link. Please check your email and try again.";
+                return Redirect(errorUrl);
             }
 
-            _logger.LogInformation("Email confirmation attempt for user: {UserId}", userId);
-
-            await _authenticationService.ConfirmEmailAsync(userId, token);
-
-            var response = new ConfirmEmailResponse();
-            
-            _logger.LogInformation("Email confirmed successfully for user: {UserId}", userId);
-            
-            return Ok(ApiResponse<ConfirmEmailResponse>.SuccessResponse(response, "Email confirmed successfully"));
-        }
-
-        /// <summary>
-        /// Alternative POST endpoint for email confirmation (for frontend forms)
-        /// </summary>
-        /// <param name="request">Confirmation request with userId and token</param>
-        /// <returns>Email confirmation result</returns>
-        [HttpPost("confirm-email")]
-        [ProducesResponseType(typeof(ApiResponse<ConfirmEmailResponse>), 200)]
-        [ProducesResponseType(typeof(ApiResponse<object>), 400)]
-        [ProducesResponseType(typeof(ApiResponse<object>), 422)]
-        [ProducesResponseType(typeof(ApiResponse<object>), 500)]
-        public async Task<IActionResult> ConfirmEmailPost([FromBody] ConfirmEmailRequest request)
-        {
-            if (!ModelState.IsValid)
+            try
             {
-                var errors = ModelState.Values
-                    .SelectMany(v => v.Errors)
-                    .Select(e => e.ErrorMessage)
-                    .ToList();
+                _logger.LogInformation("Email confirmation attempt for user: {UserId}", userId);
 
-                return BadRequest(ApiResponse<object>.ErrorResponse("Validation failed", errors));
+                await _authenticationService.ConfirmEmailAsync(userId, token);
+                
+                _logger.LogInformation("Email confirmed successfully for user: {UserId}", userId);
+                
+                // Redirect to frontend success page
+                var successUrl = $"{frontendBaseUrl}{confirmationPath}?status=success&message=Email confirmed successfully! You can now login to your account.";
+                return Redirect(successUrl);
             }
-
-            _logger.LogInformation("Email confirmation attempt for user: {UserId}", request.UserId);
-
-            await _authenticationService.ConfirmEmailAsync(request.UserId, request.Token);
-
-            var response = new ConfirmEmailResponse();
-            
-            _logger.LogInformation("Email confirmed successfully for user: {UserId}", request.UserId);
-            
-            return Ok(ApiResponse<ConfirmEmailResponse>.SuccessResponse(response, "Email confirmed successfully"));
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Email confirmation failed for user: {UserId}", userId);
+                
+                // Redirect to frontend error page
+                var errorMessage = Uri.EscapeDataString("Email confirmation failed. The link may be expired or invalid. Please try registering again.");
+                var errorUrl = $"{frontendBaseUrl}{confirmationPath}?status=error&message={errorMessage}";
+                return Redirect(errorUrl);
+            }
         }
+
+      
     }
 } 
