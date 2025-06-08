@@ -1,0 +1,44 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Tasco.TaskService.API.GrpcServices";
+
+package projectservice;
+
+// Service definition
+service ProjectService {
+  rpc GetProjectById (ProjectRequestById) returns (ProjectResponseGRPC);
+  rpc GetAllProjects (ProjectListRequest) returns (ProjectListResponse);
+  rpc CreateProject (ProjectRequest) returns (ProjectResponseGRPC);
+  rpc UpdateProject (ProjectRequest) returns (ProjectResponseGRPC);
+}
+
+// Request/Response messages
+message ProjectRequest {
+}
+
+message ProjectRequestById {
+  string id = 1;
+}
+
+message ProjectResponseGRPC {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string owner_id = 4;
+  string createdDate = 5;
+  string startDate = 6;
+  string endDate = 7;
+  string status = 8;
+  string createbyuserid = 9;
+  string createbyusername = 10;
+}
+message ProjectListResponse {
+  repeated ProjectResponseGRPC projects = 1;
+}
+
+
+message ProjectListRequest {
+  int32 page_size = 1;
+  int32 page_index = 2;
+  string search = 3;
+}

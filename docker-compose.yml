@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password123@"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1434:1433"
+    restart: always
+    networks:
+      - app-network
+
+  projectservice:
+    build:
+      context: ./services/Tasco.ProjectService/Tasco.ProjectService.API
+      dockerfile: Dockerfile
+    container_name: projectservice
+    environment:
+      - ConnectionStrings__DefaultConnectionString=Server=sqlserver;Database=ProjectDb;User Id=sa;Password=Password123@;TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080;https://+:8081
+    depends_on:
+      - sqlserver
+    ports:
+      - "5001:8080"   # HTTP
+      - "5002:8081"   # gRPC
+    restart: always
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI port
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 15s
+      retries: 3
+
+  notification-service:
+    build:
+      context: ./services/Tasco.NotificationService
+      dockerfile: Tasco.NotificationService.Worker/Dockerfile
+    container_name: notification-service
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port= Externally defined port: 5672
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

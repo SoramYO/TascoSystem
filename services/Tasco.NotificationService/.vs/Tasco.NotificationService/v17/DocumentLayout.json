@@ -3,16 +3,84 @@
   "WorkspaceRootPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}|Tasco.NotificationService.Repository\\Tasco.NotificationService.Repository.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.repository\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C66D8B15-B0F1-4F3B-9F21-2759DAC4A694}|Tasco.NotificationService.Repository\\Tasco.NotificationService.Repository.csproj|solutionrelative:tasco.notificationservice.repository\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\messaging\\rabbitmqconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\messaging\\rabbitmqconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\messaging\\interface\\irabbitmqconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\messaging\\interface\\irabbitmqconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{50B308DA-5BDE-4096-B98B-60AD50821D96}|Tasco.NotificationService.Service\\Tasco.NotificationService.Service.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.service\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{50B308DA-5BDE-4096-B98B-60AD50821D96}|Tasco.NotificationService.Service\\Tasco.NotificationService.Service.csproj|solutionrelative:tasco.notificationservice.service\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\consumers\\notificationmessageconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\consumers\\notificationmessageconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\channels\\emailnotificationchannel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\channels\\emailnotificationchannel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\smtps\\repositories\\emailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\smtps\\repositories\\emailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\channels\\interface\\inotificationchannel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\channels\\interface\\inotificationchannel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\models\\notificationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\models\\notificationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\models\\notificationmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\models\\notificationmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\models\\requestmodels\\notificationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\models\\requestmodels\\notificationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\services\\interfaces\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\services\\interfaces\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\services\\interfaces\\inotificationtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\services\\interfaces\\inotificationtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\services\\notificationtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\services\\notificationtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\smtps\\models\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\smtps\\models\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\smtps\\repositories\\iemailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\smtps\\repositories\\iemailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\enums\\notificationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\enums\\notificationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|d:\\project\\tascosystem\\services\\tasco.notificationservice\\tasco.notificationservice.worker\\tasco.notificationservice.worker.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9C960B99-797A-45BE-BE13-7BF228E38908}|Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj|solutionrelative:tasco.notificationservice.worker\\tasco.notificationservice.worker.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1070,
-          "SelectedChildIndex": 36,
+          "SelectedChildIndex": 39,
           "Children": [
             {
               "$type": "Bookmark",
@@ -170,41 +238,262 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Repository\\Class1.cs",
-              "RelativeDocumentMoniker": "Tasco.NotificationService.Repository\\Class1.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Repository\\Class1.cs",
-              "RelativeToolTip": "Tasco.NotificationService.Repository\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T13:29:13.977Z",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\appsettings.json",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\appsettings.json",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\appsettings.json*",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\appsettings.json*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-04T08:37:08.424Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Worker.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Worker.cs",
-              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Worker.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Worker.cs",
-              "RelativeToolTip": "Tasco.NotificationService.Worker\\Worker.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Program.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Program.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Program.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T13:28:55.003Z",
+              "WhenOpened": "2025-06-04T07:13:53.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Services\\NotificationService.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\NotificationService.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Services\\NotificationService.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAwwCsAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:16:08.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RabbitMQConnection.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Messaging\\RabbitMQConnection.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Messaging\\RabbitMQConnection.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Messaging\\RabbitMQConnection.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Messaging\\RabbitMQConnection.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAQwDcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:14:41.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Service\\Class1.cs",
-              "RelativeDocumentMoniker": "Tasco.NotificationService.Service\\Class1.cs",
-              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Service\\Class1.cs",
-              "RelativeToolTip": "Tasco.NotificationService.Service\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Title": ".env",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\.env",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\.env",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\.env*",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\.env*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-04T06:45:11.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IRabbitMQConnection.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Messaging\\Interface\\IRabbitMQConnection.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Messaging\\Interface\\IRabbitMQConnection.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Messaging\\Interface\\IRabbitMQConnection.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Messaging\\Interface\\IRabbitMQConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T13:28:39.117Z",
+              "WhenOpened": "2025-06-04T09:14:37.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "INotificationChannel.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Channels\\Interface\\INotificationChannel.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Channels\\Interface\\INotificationChannel.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Channels\\Interface\\INotificationChannel.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Channels\\Interface\\INotificationChannel.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:13:51.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EmailRepository.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\SMTPs\\Repositories\\EmailRepository.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\SMTPs\\Repositories\\EmailRepository.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\SMTPs\\Repositories\\EmailRepository.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\SMTPs\\Repositories\\EmailRepository.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswA4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:17:29.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmailNotificationChannel.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Channels\\EmailNotificationChannel.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Channels\\EmailNotificationChannel.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Channels\\EmailNotificationChannel.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Channels\\EmailNotificationChannel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:12:47.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NotificationMessageConsumer.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Consumers\\NotificationMessageConsumer.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Consumers\\NotificationMessageConsumer.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Consumers\\NotificationMessageConsumer.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Consumers\\NotificationMessageConsumer.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAYwAwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:54:42.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "NotificationResult.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Models\\NotificationResult.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Models\\NotificationResult.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Models\\NotificationResult.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Models\\NotificationResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:15:34.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "NotificationMessage.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Models\\NotificationMessage.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Models\\NotificationMessage.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Models\\NotificationMessage.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Models\\NotificationMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:15:17.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NotificationRequest.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Models\\RequestModels\\NotificationRequest.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Models\\RequestModels\\NotificationRequest.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Models\\RequestModels\\NotificationRequest.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Models\\RequestModels\\NotificationRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:15:07.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "INotificationService.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationService.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationService.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationService.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:15:42.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "INotificationTemplateService.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationTemplateService.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationTemplateService.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationTemplateService.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Services\\Interfaces\\INotificationTemplateService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:15:53.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "NotificationTemplateService.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\NotificationTemplateService.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Services\\NotificationTemplateService.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Services\\NotificationTemplateService.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Services\\NotificationTemplateService.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAkwAQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:17:04.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Email.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\SMTPs\\Models\\Email.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\SMTPs\\Models\\Email.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\SMTPs\\Models\\Email.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\SMTPs\\Models\\Email.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:17:22.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IEmailRepository.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\SMTPs\\Repositories\\IEmailRepository.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\SMTPs\\Repositories\\IEmailRepository.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\SMTPs\\Repositories\\IEmailRepository.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\SMTPs\\Repositories\\IEmailRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:17:34.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NotificationStatus.cs",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Enums\\NotificationStatus.cs",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Enums\\NotificationStatus.cs",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Enums\\NotificationStatus.cs",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Enums\\NotificationStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T09:12:40.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Tasco.NotificationService.Worker",
+              "DocumentMoniker": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
+              "RelativeDocumentMoniker": "Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
+              "ToolTip": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
+              "RelativeToolTip": "Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-04T09:11:41.262Z",
               "EditorCaption": ""
             }
           ]
