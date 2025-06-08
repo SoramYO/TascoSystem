@@ -21,4 +21,15 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Logos\Tasco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tasco.NotificationService.Core\Tasco.NotificationService.Core.csproj" />
+    <ProjectReference Include="..\Tasco.NotificationService.Infrastructure\Tasco.NotificationService.Infrastructure.csproj" />
+  </ItemGroup>
 </Project>
