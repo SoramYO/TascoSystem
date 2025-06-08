@@ -19,6 +19,11 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+<<<<<<< HEAD
+=======
+    <Folder Include="Models\ResponseModels\" />
+    <Folder Include="Models\RequestModels\" />
+>>>>>>> 23e2b8184094217de365b3733f7b54fc31949da3
   </ItemGroup>
 
   <ItemGroup>
