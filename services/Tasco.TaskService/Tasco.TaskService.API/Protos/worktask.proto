@@ -7,12 +7,10 @@ option csharp_namespace = "Tasco.TaskService.API.Protos";
 package worktask;
 
 service WorkTaskService {
-  rpc CreateWorkTask (WorkTaskRequest) returns (WorkTaskResponse);
+  rpc CreateWorkTask (WorkTaskRequest) returns (WorkTaskResponseUnique);
   rpc DeleteWorkTask (WorkTaskRequestById) returns (google.protobuf.Empty);
-  rpc GetAllWorkTasks (WorkTaskListRequest) returns (WorkTaskListResponse);
-  rpc GetMyWorkTasks (WorkTaskListRequest) returns (WorkTaskListResponse);
-  rpc GetWorkTaskById (WorkTaskRequestById) returns (WorkTaskResponse);
-  rpc UpdateWorkTask (UpdateWorkTaskRequest) returns (WorkTaskResponse);
+  rpc GetWorkTaskById (WorkTaskRequestById) returns (WorkTaskResponseUnique);
+  rpc UpdateWorkTask (UpdateWorkTaskRequest) returns (WorkTaskResponseUnique);
 }
 
 message WorkTaskRequest {
@@ -24,7 +22,8 @@ message WorkTaskRequest {
   string start_date = 6;
   string end_date = 7;
   string due_date = 8;
-  int32 progress = 9;
+  string created_by_user_id = 9;
+  string created_by_user_name = 10;
 }
 
 message WorkTaskRequestById {
@@ -42,7 +41,7 @@ message UpdateWorkTaskRequest {
   WorkTaskRequest task = 2;
 }
 
-message WorkTaskResponse {
+message WorkTaskResponseUnique {
   string id = 1;
   string title = 2;
   string description = 3;
@@ -59,9 +58,4 @@ message WorkTaskResponse {
   string modified_date = 14;
 }
 
-message WorkTaskListResponse {
-  int32 total_count = 1;
-  int32 page_count = 2;
-  int32 current_page = 3;
-  repeated WorkTaskResponse work_tasks = 4;
-}
+

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj": {}
+    "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj": {}
   },
   "projects": {
-    "D:\\Project\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj": {
+    "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
+        "projectUniqueName": "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
         "projectName": "Tasco.Gateway.API",
-        "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
-        "packagesPath": "C:\\Users\\tquan\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\obj\\",
+        "projectPath": "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
+        "packagesPath": "C:\\Users\\son\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tquan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\son\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,9 +51,25 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.16, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.12.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
+            },
+            "Yarp.ReverseProxy": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             }
           },
           "imports": [
@@ -74,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

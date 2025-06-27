@@ -31,6 +31,8 @@ namespace Tasco.TaskService.Repository.Entities
 
         public bool IsActive { get; set; } = true;
 
+        public bool IsDeleted { get; set; } = false;
+
         // Navigation properties
         public virtual ICollection<WorkTask> WorkTasks { get; set; } = new List<WorkTask>();
     }

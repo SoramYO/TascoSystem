@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Tasco.TaskService.Repository.Entities;
 using Tasco.TaskService.Repository.Paginate;
 using Tasco.TaskService.Repository.UnitOfWork;
 using Tasco.TaskService.Service.BusinessModels;
 using Tasco.TaskService.Service.Interfaces;
+
 
 namespace Tasco.TaskService.Service.Implementations
 {
@@ -28,14 +30,6 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task<WorkArea> CreateWorkArea(WorkAreaBusinessModel workArea)
         {
             var entity = _mapper.Map<WorkArea>(workArea);
-            var userId = GetUserIdFromJwt();
-            var userEmail = GetUserEmailFromJwt();
-            if (userId == null)
-            {
-                throw new UnauthorizedAccessException("User is not authenticated.");
-            }
-
-            entity.CreatedByUserId = Guid.Parse(userId);
             entity.CreatedDate = DateTime.UtcNow;
             entity.IsActive = true;
 
@@ -48,54 +42,50 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task DeleteWorkArea(Guid id)
         {
             var workArea = await _unitOfWork.GetRepository<WorkArea>()
-                .SingleOrDefaultAsync(predicate: w => w.Id == id);
+                .SingleOrDefaultAsync(predicate: w => w.Id == id && !w.IsDeleted);
 
             if (workArea == null)
             {
                 throw new KeyNotFoundException($"Work area with ID {id} not found.");
             }
 
-            _unitOfWork.GetRepository<WorkArea>().Delete(workArea);
+            workArea.IsDeleted = true;
+            _unitOfWork.GetRepository<WorkArea>().Update(workArea);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IPaginate<WorkArea>> GetAllWorkAreas(int pageSize, int pageIndex, string search = null)
+        public async Task<IPaginate<WorkArea>> GetMyWorkAreasByProjectId(int pageSize, int pageIndex, Guid projectId)
         {
-            var workAreas = await _unitOfWork.GetRepository<WorkArea>().GetPagingListAsync(
-                predicate: w => string.IsNullOrEmpty(search) ||
-                               w.Name.Contains(search) ||
-                               w.Description.Contains(search),
-                orderBy: q => q.OrderByDescending(w => w.CreatedDate),
+            var workArea = await _unitOfWork.GetRepository<WorkArea>().GetPagingListAsync(
+                predicate: w => w.ProjectId == projectId && !w.IsDeleted,
                 page: pageIndex,
-                size: pageSize);
+                size: pageSize,
+                include: query => query
+                    .Include(w => w.WorkTasks)
+                    .ThenInclude(wt => wt.TaskActions)
+                    .Include(w => w.WorkTasks)
+                    .ThenInclude(wt => wt.TaskMembers)
+                    .Include(w => w.WorkTasks)
+                    .ThenInclude(wt => wt.TaskObjectives)
+            );
 
-            return workAreas;
+            return workArea;
         }
 
-        public async Task<IPaginate<WorkArea>> GetMyWorkAreas(int pageSize, int pageIndex, string search = null)
-        {
-            var userId = GetUserIdFromJwt();
-            if (userId == null)
-            {
-                throw new UnauthorizedAccessException("User is not authenticated.");
-            }
-
-            var workAreas = await _unitOfWork.GetRepository<WorkArea>().GetPagingListAsync(
-                predicate: w => w.CreatedByUserId == Guid.Parse(userId) &&
-                               (string.IsNullOrEmpty(search) ||
-                                w.Name.Contains(search) ||
-                                w.Description.Contains(search)),
-                orderBy: q => q.OrderByDescending(w => w.CreatedDate),
-                page: pageIndex,
-                size: pageSize);
-
-            return workAreas;
-        }
 
         public async Task<WorkArea> GetWorkAreaById(Guid id)
         {
             var workArea = await _unitOfWork.GetRepository<WorkArea>()
-                .SingleOrDefaultAsync(predicate: w => w.Id == id);
+                .SingleOrDefaultAsync(
+                    predicate: w => w.Id == id && !w.IsDeleted,
+                    include: query => query
+                        .Include(w => w.WorkTasks)
+                        .ThenInclude(wt => wt.TaskActions)
+                        .Include(w => w.WorkTasks)
+                        .ThenInclude(wt => wt.TaskMembers)
+                        .Include(w => w.WorkTasks)
+                        .ThenInclude(wt => wt.TaskObjectives)
+                    );
 
             if (workArea == null)
             {
@@ -108,31 +98,28 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task UpdateWorkArea(Guid id, WorkAreaBusinessModel workArea)
         {
             var existingWorkArea = await _unitOfWork.GetRepository<WorkArea>()
-                .SingleOrDefaultAsync(predicate: w => w.Id == id);
-
+                .SingleOrDefaultAsync(predicate: w => w.Id == id && !w.IsDeleted);
             if (existingWorkArea == null)
             {
                 throw new KeyNotFoundException($"Work area with ID {id} not found.");
             }
+            
+            _logger.LogInformation($"Updating work area with ID {id}");
+            _logger.LogInformation($"Work area: {JsonConvert.SerializeObject(workArea)}");
 
-            var userId = GetUserIdFromJwt();
-            var userEmail = GetUserEmailFromJwt();
-            if (userId == null)
+            
+            // Update the fields
+            existingWorkArea.Name = workArea.Name;
+            existingWorkArea.Description = workArea.Description;
+            existingWorkArea.DisplayOrder = workArea.DisplayOrder;
+            existingWorkArea.ProjectId = workArea.ProjectId;
+            
+            // Only update CreatedByUserId if it's not empty
+            if (workArea.CreatedByUserId != Guid.Empty)
             {
-                throw new UnauthorizedAccessException("User is not authenticated.");
+                existingWorkArea.CreatedByUserId = workArea.CreatedByUserId;
             }
-
-            // Preserve original creation data
-            var createdByUserId = existingWorkArea.CreatedByUserId;
-            var createdDate = existingWorkArea.CreatedDate;
-
-            // Map new data
-            _mapper.Map(workArea, existingWorkArea);
-
-            // Restore original creation data
-            existingWorkArea.CreatedByUserId = createdByUserId;
-            existingWorkArea.CreatedDate = createdDate;
-
+            
             _unitOfWork.GetRepository<WorkArea>().Update(existingWorkArea);
             await _unitOfWork.CommitAsync();
         }

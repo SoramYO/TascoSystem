@@ -1,9 +1,8 @@
-version: '3.8'
-
 services:
-  sqlserver:
+  # SQL Server cho UserAuthService
+  sqlserver-auth:
     image: mcr.microsoft.com/mssql/server:2019-latest
-    container_name: sqlserver
+    container_name: sqlserver-auth
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: "Password123@"
@@ -13,21 +12,129 @@ services:
     restart: always
     networks:
       - app-network
+    volumes:
+      - sqlserver_auth_data:/var/opt/mssql
+
+  # SQL Server cho TaskService
+  sqlserver-task:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver-task
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password123@"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1435:1433"
+    restart: always
+    networks:
+      - app-network
+    volumes:
+      - sqlserver_task_data:/var/opt/mssql
+
+  # PostgreSQL cho ProjectService
+  postgresql:
+    image: postgres:15
+    container_name: postgresql
+    environment:
+      POSTGRES_DB: ProjectManagementDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - app-network
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+
+  gateway:
+    build:
+      context: ./services/Tasco.Gateway/Tasco.Gateway.API
+      dockerfile: Dockerfile
+    container_name: gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Key=Ndj239JdlaiekNdsak20sh4Jdlahtoq93nfJUoqpkcbvJdue15jaTJeVA315OrM7E2cBab30RMH3hsrHgduFrHDcE6fxjoYZgeFONFh7HgQHj1i4OI4
+      - Jwt__Issuer=TascoSystem
+      - Jwt__Audience=TascoSystemUsers
+    ports:
+      - "5000:8080"   # HTTP
+    restart: always
+    networks:
+      - app-network
+
+  userauthservice:
+    build:
+      context: ./services/Tasco.UserAuthService
+      dockerfile: Tasco.UserAuthService.API/Dockerfile
+    container_name: userauthservice
+    environment:
+      - ConnectionStrings__TascoAuth=Server=sqlserver-auth;Database=TascoAuthDb;User Id=sa;Password=Password123@;TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Key=Ndj239JdlaiekNdsak20sh4Jdlahtoq93nfJUoqpkcbvJdue15jaTJeVA315OrM7E2cBab30RMH3hsrHgduFrHDcE6fxjoYZgeFONFh7HgQHj1i4OI4
+      - Jwt__Issuer=TascoSystem
+      - Jwt__Audience=TascoSystemUsers
+    depends_on:
+      - sqlserver-auth
+    ports:
+      - "5001:8080"   # HTTP
+    restart: always
+    networks:
+      - app-network
 
   projectservice:
     build:
-      context: ./services/Tasco.ProjectService/Tasco.ProjectService.API
-      dockerfile: Dockerfile
+      context: ./services/Tasco.ProjectService
+      dockerfile: Tasco.ProjectService.API/Dockerfile
     container_name: projectservice
     environment:
-      - ConnectionStrings__DefaultConnectionString=Server=sqlserver;Database=ProjectDb;User Id=sa;Password=Password123@;TrustServerCertificate=True
+      - ConnectionStrings__DefaultConnection=Host=postgresql;Database=ProjectManagementDB;Username=postgres;Password=12345
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:8080;https://+:8081
+      - ASPNETCORE_URLS=http://+:8080
     depends_on:
-      - sqlserver
+      - postgresql
     ports:
-      - "5001:8080"   # HTTP
-      - "5002:8081"   # gRPC
+      - "5002:8080"   # HTTP
+    restart: always
+    networks:
+      - app-network
+
+  taskservice:
+    build:
+      context: ./services/Tasco.TaskService
+      dockerfile: Tasco.TaskService.API/Dockerfile
+    container_name: taskservice
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver-task;Database=TascoTaskDb;User Id=sa;Password=Password123@;TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Key=Ndj239JdlaiekNdsak20sh4Jdlahtoq93nfJUoqpkcbvJdue15jaTJeVA315OrM7E2cBab30RMH3hsrHgduFrHDcE6fxjoYZgeFONFh7HgQHj1i4OI4
+      - Jwt__Issuer=TascoSystem
+      - Jwt__Audience=TascoSystemUsers
+    depends_on:
+      - sqlserver-task
+    ports:
+      - "5003:8080"   # HTTP
+    restart: always
+    networks:
+      - app-network
+
+  orchestrator:
+    build:
+      context: ./services/Tasco.Orchestrator
+      dockerfile: Tasco.Orchestrator.Api/Dockerfile
+    container_name: orchestrator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    depends_on:
+      - projectservice
+      - taskservice
+      - userauthservice
+    ports:
+      - "5004:8080"   # HTTP
     restart: always
     networks:
       - app-network
@@ -70,3 +177,8 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  sqlserver_auth_data:
+  sqlserver_task_data:
+  postgresql_data:

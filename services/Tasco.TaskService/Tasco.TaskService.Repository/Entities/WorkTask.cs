@@ -51,6 +51,8 @@ namespace Tasco.TaskService.Repository.Entities
         [StringLength(200)]
         public string CreatedByUserName { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
+
         // Foreign key
         [ForeignKey("WorkAreaId")]
         public virtual WorkArea WorkArea { get; set; }
@@ -58,7 +60,7 @@ namespace Tasco.TaskService.Repository.Entities
         // Navigation properties
         public virtual ICollection<TaskObjective> TaskObjectives { get; set; } = new List<TaskObjective>();
         public virtual ICollection<TaskMember> TaskMembers { get; set; } = new List<TaskMember>();
-        public virtual ICollection<TaskFile> TaskFiles { get; set; } = new List<TaskFile>();
         public virtual ICollection<TaskAction> TaskActions { get; set; } = new List<TaskAction>();
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

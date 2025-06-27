@@ -28,14 +28,18 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task CreateTaskAction(TaskActionBusinessModel taskAction)
         {
             var entity = _mapper.Map<TaskAction>(taskAction);
-            var userId = GetUserIdFromJwt();
-            var userEmail = GetUserEmailFromJwt();
-            if (userId == null)
+            
+            // Use user information from the business model instead of JWT
+            // Since authentication is disabled, we'll use default values or values from the model
+            if (entity.UserId == Guid.Empty)
             {
-                throw new UnauthorizedAccessException("User is not authenticated.");
+                entity.UserId = Guid.NewGuid(); // Use a default user ID
             }
-            entity.UserId = Guid.Parse(userId);
-            entity.UserName = userEmail;
+            if (string.IsNullOrEmpty(entity.UserName))
+            {
+                entity.UserName = "System User"; // Use a default user name
+            }
+            
             await _unitOfWork.GetRepository<TaskAction>().InsertAsync(entity);
             await _unitOfWork.CommitAsync();
         }
@@ -49,10 +53,12 @@ namespace Tasco.TaskService.Service.Implementations
             {
                 throw new KeyNotFoundException($"Task action with ID {id} not found.");
             }
+
             return taskAction;
         }
 
-        public async Task<IPaginate<TaskAction>> GetTaskActionsByTaskId(Guid taskId, int pageSize = 10, int pageIndex = 1)
+        public async Task<IPaginate<TaskAction>> GetTaskActionsByTaskId(Guid taskId, int pageSize = 10,
+            int pageIndex = 1)
         {
             var taskActions = await _unitOfWork.GetRepository<TaskAction>().GetPagingListAsync(
                 predicate: t => t.WorkTaskId == taskId,

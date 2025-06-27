@@ -1,14 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
+﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Query;
 using Tasco.ProjectService.Repository.Paginate;
 
 namespace Tasco.ProjectService.Repository.Repositories
+
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
@@ -21,14 +17,17 @@ namespace Tasco.ProjectService.Repository.Repositories
             _dbSet = context.Set<T>();
         }
 
+        public void Dispose()
+        {
+            _dbContext?.Dispose();
+        }
+
         #region Gett Async
 
-        public virtual async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, bool enableSplitQuery = false)
+        public virtual async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> query = _dbSet;
             if (include != null) query = include(query);
-
-            if (enableSplitQuery) query = query.AsSplitQuery();
 
             if (predicate != null) query = query.Where(predicate);
 
@@ -73,7 +72,7 @@ namespace Tasco.ProjectService.Repository.Repositories
 
             if (orderBy != null) return await orderBy(query).AsNoTracking().Select(selector).ToListAsync();
 
-            return await query.AsNoTracking().Select(selector).ToListAsync();
+            return await query.Select(selector).ToListAsync();
         }
 
         public Task<IPaginate<T>> GetPagingListAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null, int page = 1,
@@ -82,7 +81,6 @@ namespace Tasco.ProjectService.Repository.Repositories
             IQueryable<T> query = _dbSet;
             if (include != null) query = include(query);
             if (predicate != null) query = query.Where(predicate);
-            query = query.AsNoTracking();
             if (orderBy != null) return orderBy(query).ToPaginateAsync(page, size, 1);
             return query.AsNoTracking().ToPaginateAsync(page, size, 1);
         }
@@ -115,7 +113,7 @@ namespace Tasco.ProjectService.Repository.Repositories
         #endregion
 
         #region Update
-        public void Update(T entity)
+        public void UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
         }
@@ -125,12 +123,12 @@ namespace Tasco.ProjectService.Repository.Repositories
             _dbSet.UpdateRange(entities);
         }
 
-        public void Delete(T entity)
+        public void DeleteAsync(T entity)
         {
             _dbSet.Remove(entity);
         }
 
-        public void DeleteRange(IEnumerable<T> entities)
+        public void DeleteRangeAsync(IEnumerable<T> entities)
         {
             _dbSet.RemoveRange(entities);
         }

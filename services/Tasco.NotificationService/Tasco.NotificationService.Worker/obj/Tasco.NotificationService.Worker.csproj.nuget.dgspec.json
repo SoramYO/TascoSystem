@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj": {}
+    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj": {}
   },
   "projects": {
-    "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj": {
+    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj",
+        "projectUniqueName": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj",
         "projectName": "Tasco.NotificationService.Core",
-        "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj",
-        "packagesPath": "C:\\Users\\tquan\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\obj\\",
+        "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj",
+        "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
+        "outputPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tquan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -71,24 +72,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj": {
+    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj",
+        "projectUniqueName": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj",
         "projectName": "Tasco.NotificationService.Infrastructure",
-        "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\tquan\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\obj\\",
+        "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
+        "outputPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tquan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,14 +98,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj": {
-                "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj"
+              "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj": {
+                "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj"
               }
             }
           }
@@ -154,24 +156,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj": {
+    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
+        "projectUniqueName": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
         "projectName": "Tasco.NotificationService.Worker",
-        "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
-        "packagesPath": "C:\\Users\\tquan\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\obj\\",
+        "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\Tasco.NotificationService.Worker.csproj",
+        "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
+        "outputPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Worker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tquan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -180,17 +182,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj": {
-                "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj"
+              "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj": {
+                "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Core\\Tasco.NotificationService.Core.csproj"
               },
-              "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj": {
-                "projectPath": "D:\\Project\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj"
+              "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj": {
+                "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.NotificationService\\Tasco.NotificationService.Infrastructure\\Tasco.NotificationService.Infrastructure.csproj"
               }
             }
           }
@@ -256,7 +259,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

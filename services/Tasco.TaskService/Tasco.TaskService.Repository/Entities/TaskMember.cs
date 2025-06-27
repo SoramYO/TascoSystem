@@ -22,7 +22,7 @@ namespace Tasco.TaskService.Repository.Entities
         public string UserName { get; set; } // Cache
 
         [StringLength(200)]
-        public string UserEmail { get; set; } // Cache
+        public string? UserEmail { get; set; } // Nullable
 
         [StringLength(50)]
         public string Role { get; set; } = "Assignee"; // Assignee, Reviewer, Observer
@@ -33,6 +33,8 @@ namespace Tasco.TaskService.Repository.Entities
         public Guid AssignedByUserId { get; set; }
 
         public bool IsActive { get; set; } = true;
+
+        public bool IsDeleted { get; set; } = false;
 
         // Foreign key
         [ForeignKey("WorkTaskId")]

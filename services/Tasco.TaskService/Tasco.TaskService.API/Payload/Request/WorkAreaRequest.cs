@@ -8,10 +8,10 @@ namespace Tasco.TaskService.API.Payload.Request
 
         [Required]
         [StringLength(200)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [StringLength(1000)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public int DisplayOrder { get; set; } = 0;
 

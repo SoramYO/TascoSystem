@@ -18,12 +18,13 @@ namespace Tasco.TaskService.Service.Implementations
     public class WorkTaskService : BaseService<WorkTaskService>, IWorkTaskService
     {
         private readonly ITaskActionService _taskActionService;
+
         public WorkTaskService(
             IUnitOfWork<TaskManagementDbContext> unitOfWork,
             ILogger<WorkTaskService> logger, IMapper mapper,
             IHttpContextAccessor httpContextAccessor,
             ITaskActionService taskActionService
-            ) : base(unitOfWork, logger, mapper, httpContextAccessor)
+        ) : base(unitOfWork, logger, mapper, httpContextAccessor)
         {
             _taskActionService = taskActionService;
         }
@@ -31,25 +32,21 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task<WorkTask> CreateWorkTask(WorkTaskBusinessModel workTask)
         {
             var entity = _mapper.Map<WorkTask>(workTask);
-            var userId = GetUserIdFromJwt();
-            var userEmail = GetUserEmailFromJwt();
-            if (userId == null)
-            {
-                throw new UnauthorizedAccessException("User is not authenticated.");
-            }
+            
 
             // Set creation info
-            entity.CreatedByUserId = Guid.Parse(userId);
-            entity.CreatedByUserName = userEmail;
+            entity.CreatedByUserId = workTask.CreatedByUserId;
+            entity.CreatedByUserName = workTask.CreatedByUserName;
+            entity.WorkAreaId = workTask.WorkAreaId;
             entity.CreatedDate = DateTime.UtcNow;
             entity.Progress = 0;
 
             entity.TaskMembers.Add(new TaskMember
             {
-                UserId = Guid.Parse(userId),
-                UserName = userEmail,
+                UserId =  workTask.CreatedByUserId,
+                UserName = workTask.CreatedByUserName,
                 Role = "Assignee",
-                AssignedByUserId = Guid.Parse(userId),
+                AssignedByUserId =  workTask.CreatedByUserId,
                 AssignedDate = DateTime.UtcNow,
                 IsActive = true
             });
@@ -72,38 +69,35 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task DeleteWorkTask(Guid id)
         {
             var task = await _unitOfWork.GetRepository<WorkTask>()
-                .SingleOrDefaultAsync(predicate: t => t.Id == id);
+                .SingleOrDefaultAsync(predicate: t => t.Id == id && !t.IsDeleted);
 
             if (task == null)
             {
                 throw new KeyNotFoundException($"Work task with ID {id} not found.");
             }
-            _unitOfWork.GetRepository<WorkTask>().Delete(task);
+
+            task.IsDeleted = true;
+            _unitOfWork.GetRepository<WorkTask>().Update(task);
             await _unitOfWork.CommitAsync();
         }
 
         public async Task<IPaginate<WorkTask>> GetAllWorkTasks(int pageSize, int pageIndex, string search = null)
         {
             var workTasks = await _unitOfWork.GetRepository<WorkTask>().GetPagingListAsync
-                (predicate: t => string.IsNullOrEmpty(search) ||
-                                t.Title.Contains(search) ||
-                                t.Description.Contains(search),
-                 orderBy: q => q.OrderByDescending(t => t.CreatedDate),
-                 page: pageIndex,
-                 size: pageSize);
+            (predicate: t => !t.IsDeleted && (string.IsNullOrEmpty(search) ||
+                                              t.Title.Contains(search) ||
+                                              t.Description.Contains(search)),
+                orderBy: q => q.OrderByDescending(t => t.CreatedDate),
+                page: pageIndex,
+                size: pageSize);
             return workTasks;
         }
 
         public async Task<IPaginate<WorkTask>> GetMyWorkTasks(int pageSize, int pageIndex, string search = null)
         {
-            var userId = GetUserIdFromJwt();
-            if (userId == null)
-            {
-                throw new UnauthorizedAccessException("User is not authenticated.");
-            }
-
+            // Since authentication is disabled, return all tasks or implement alternative logic
             var query = await _unitOfWork.GetRepository<WorkTask>().GetPagingListAsync(
-                predicate: t => t.TaskMembers.Any(tm => tm.UserId == Guid.Parse(userId) && tm.IsActive),
+                predicate: t => !t.IsDeleted,
                 orderBy: q => q.OrderByDescending(t => t.CreatedDate),
                 page: pageIndex,
                 size: pageSize);
@@ -115,39 +109,41 @@ namespace Tasco.TaskService.Service.Implementations
         {
             var task = await _unitOfWork.GetRepository<WorkTask>()
                 .SingleOrDefaultAsync(
-                    predicate: t => t.Id == id,
+                    predicate: t => t.Id == id && !t.IsDeleted,
                     include: t => t.Include(x => x.TaskMembers)
-                                 .Include(x => x.TaskObjectives)
-                                 .Include(x => x.TaskFiles)
-                                 .Include(x => x.TaskActions)
-                                 .Include(x => x.WorkArea));
+                        .Include(x => x.TaskObjectives)
+                        .Include(x => x.TaskActions)
+                        .Include(x => x.WorkArea));
 
             if (task == null)
             {
                 throw new KeyNotFoundException($"Work task with ID {id} not found.");
             }
+
             return task;
         }
 
         public async Task UpdateWorkTask(Guid id, WorkTaskBusinessModel workTask)
         {
+            if (workTask == null)
+            {
+                throw new ArgumentNullException(nameof(workTask), "WorkTask data cannot be null");
+            }
+
             var existingTask = await _unitOfWork.GetRepository<WorkTask>()
                 .SingleOrDefaultAsync(
                     predicate: t => t.Id == id,
                     include: t => t.Include(x => x.TaskMembers)
-                                 .Include(x => x.TaskObjectives));
+                        .Include(x => x.TaskObjectives));
 
             if (existingTask == null)
             {
                 throw new KeyNotFoundException($"Work task with ID {id} not found.");
             }
 
-            var userId = GetUserIdFromJwt();
-            var userEmail = GetUserEmailFromJwt();
-            if (userId == null)
-            {
-                throw new UnauthorizedAccessException("User is not authenticated.");
-            }
+            // Use user information from the request instead of JWT
+            var userId = workTask.CreatedByUserId.ToString();
+            var userEmail = workTask.CreatedByUserName;
 
             // Track changes for logging
             var changes = new List<string>();
@@ -157,45 +153,52 @@ namespace Tasco.TaskService.Service.Implementations
             if (existingTask.Title != workTask.Title)
             {
                 changes.Add("Title");
-                oldValues.Add(existingTask.Title);
-                newValues.Add(workTask.Title);
+                oldValues.Add(existingTask.Title ?? "");
+                newValues.Add(workTask.Title ?? "");
             }
+
             if (existingTask.Description != workTask.Description)
             {
                 changes.Add("Description");
-                oldValues.Add(existingTask.Description);
-                newValues.Add(workTask.Description);
+                oldValues.Add(existingTask.Description ?? "");
+                newValues.Add(workTask.Description ?? "");
             }
+
             if (existingTask.Status != workTask.Status)
             {
                 changes.Add("Status");
-                oldValues.Add(existingTask.Status);
-                newValues.Add(workTask.Status);
+                oldValues.Add(existingTask.Status ?? "");
+                newValues.Add(workTask.Status ?? "");
             }
+
             if (existingTask.Priority != workTask.Priority)
             {
                 changes.Add("Priority");
-                oldValues.Add(existingTask.Priority);
-                newValues.Add(workTask.Priority);
+                oldValues.Add(existingTask.Priority ?? "");
+                newValues.Add(workTask.Priority ?? "");
             }
+
             if (existingTask.StartDate != workTask.StartDate)
             {
                 changes.Add("StartDate");
-                oldValues.Add(existingTask.StartDate?.ToString("yyyy-MM-dd"));
-                newValues.Add(workTask.StartDate?.ToString("yyyy-MM-dd"));
+                oldValues.Add(existingTask.StartDate?.ToString("yyyy-MM-dd") ?? "");
+                newValues.Add(workTask.StartDate?.ToString("yyyy-MM-dd") ?? "");
             }
+
             if (existingTask.EndDate != workTask.EndDate)
             {
                 changes.Add("EndDate");
-                oldValues.Add(existingTask.EndDate?.ToString("yyyy-MM-dd"));
-                newValues.Add(workTask.EndDate?.ToString("yyyy-MM-dd"));
+                oldValues.Add(existingTask.EndDate?.ToString("yyyy-MM-dd") ?? "");
+                newValues.Add(workTask.EndDate?.ToString("yyyy-MM-dd") ?? "");
             }
+
             if (existingTask.DueDate != workTask.DueDate)
             {
                 changes.Add("DueDate");
-                oldValues.Add(existingTask.DueDate?.ToString("yyyy-MM-dd"));
-                newValues.Add(workTask.DueDate?.ToString("yyyy-MM-dd"));
+                oldValues.Add(existingTask.DueDate?.ToString("yyyy-MM-dd") ?? "");
+                newValues.Add(workTask.DueDate?.ToString("yyyy-MM-dd") ?? "");
             }
+
             if (existingTask.Progress != workTask.Progress)
             {
                 changes.Add("Progress");

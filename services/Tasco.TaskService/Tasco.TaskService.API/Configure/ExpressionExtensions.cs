@@ -4,7 +4,8 @@ namespace Tasco.TaskService.API.Configure
 {
     public static class ExpressionExtensions
     {
-        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1,
+            Expression<Func<T, bool>> expr2)
         {
             var parameter = Expression.Parameter(typeof(T));
 
@@ -31,14 +32,14 @@ namespace Tasco.TaskService.API.Configure
                 _replacements[original] = replacement;
             }
 
-            public override Expression Visit(Expression node)
+            public override Expression Visit(Expression? node)
             {
                 if (node != null && _replacements.TryGetValue(node, out var replacement))
                 {
                     return replacement;
                 }
 
-                return base.Visit(node);
+                return base.Visit(node) ?? node;
             }
         }
     }

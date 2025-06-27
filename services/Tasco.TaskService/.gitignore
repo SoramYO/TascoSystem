@@ -506,3 +506,5 @@ docs/api/
 # API documentation
 api-docs/
 swagger/
+.vs
+.cursor

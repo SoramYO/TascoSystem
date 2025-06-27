@@ -29,12 +29,14 @@ namespace Tasco.TaskService.Repository.Entities
         public string Description { get; set; }
 
         [StringLength(1000)]
-        public string OldValue { get; set; }
+        public string? OldValue { get; set; }
 
         [StringLength(1000)]
-        public string NewValue { get; set; }
+        public string? NewValue { get; set; }
 
         public DateTime ActionDate { get; set; } = DateTime.Now;
+
+        public bool IsDeleted { get; set; } = false;
 
         // Foreign key
         [ForeignKey("WorkTaskId")]

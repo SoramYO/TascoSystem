@@ -29,20 +29,23 @@ namespace Tasco.TaskService.Service
 
 		protected string GetUserIdFromJwt()
 		{
-			var userId = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-			return userId;
+			// Authentication is disabled, return null
+			_logger.LogInformation("Authentication is disabled, returning null for user ID");
+			return null;
 		}
 
 		protected string GetUserEmailFromJwt()
 		{
-			var email = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.Email)?.Value;
-			return email;
+			// Authentication is disabled, return null
+			_logger.LogInformation("Authentication is disabled, returning null for user email");
+			return null;
 		}
 
 		protected string GetRoleFromJwt()
 		{
-			string role = _httpContextAccessor?.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
-			return role;
+			// Authentication is disabled, return null
+			_logger.LogInformation("Authentication is disabled, returning null for user role");
+			return null;
 		}
 	}
 }

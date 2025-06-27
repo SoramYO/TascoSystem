@@ -33,7 +33,9 @@ namespace Tasco.TaskService.Repository.Entities
         [Required]
         public Guid CreatedByUserId { get; set; }
 
-        public Guid CompletedByUserId { get; set; }
+        public Guid? CompletedByUserId { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
 
         // Foreign key
         [ForeignKey("WorkTaskId")]

@@ -9,6 +9,7 @@ namespace Tasco.TaskService.Service.BusinessModels
 {
 	public class WorkAreaBusinessModel
 	{
+		public Guid Id { get; set; }
         public Guid ProjectId { get; set; }
 
         [Required]
@@ -19,6 +20,8 @@ namespace Tasco.TaskService.Service.BusinessModels
         public string Description { get; set; }
 
         public int DisplayOrder { get; set; } = 0;
+        
+        public Guid CreatedByUserId { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 

@@ -31,15 +31,30 @@ namespace Tasco.TaskService.API.Middlewares
                 //log this exception
                 logger.LogError(ex, $"{errorId} : {ex.Message}");
                 //return custom error response
-                httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                httpContext.Response.ContentType = "application/json";
-                var error = new
+                if (ex is UnauthorizedAccessException)
                 {
-                    Id = errorId,
-                    ErrorMessage = "Something went wrong. Please contact support."
-                };
-                await httpContext.Response.WriteAsJsonAsync(error);
-
+                    httpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                    httpContext.Response.ContentType = "application/json";
+                    var error = new
+                    {
+                        Id = errorId,
+                        ErrorCode = 401,
+                        ErrorMessage = ex.Message
+                    };
+                    await httpContext.Response.WriteAsJsonAsync(error);
+                }
+                else
+                {
+                    httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    httpContext.Response.ContentType = "application/json";
+                    var error = new
+                    {
+                        Id = errorId,
+                        ErrorCode = 500,
+                        ErrorMessage = "Something went wrong. Please contact support."
+                    };
+                    await httpContext.Response.WriteAsJsonAsync(error);
+                }
             }
         }
     }

@@ -10,15 +10,17 @@ namespace Tasco.TaskService.Repository.Entities
 {
 	public class Comment
 	{
-
 		[Key]
 		public Guid Id { get; set; }
 		public Guid TaskId { get; set; }
 		public Guid UserId { get; set; }
+		public string UserName { get; set; }
 		public string Content { get; set; }
 		public DateTime CreatedAt { get; set; }
-		public DateTime UpdatedAt { get; set; }
+		public DateTime? UpdatedAt { get; set; }
+		public bool IsDeleted { get; set; } = false;
+
 		[ForeignKey("TaskId")]
-		public virtual Task Task { get; set; }
+		public virtual WorkTask WorkTask { get; set; }
 	}
 }

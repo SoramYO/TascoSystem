@@ -17,10 +17,50 @@ namespace Tasco.TaskService.Repository.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("TaskId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("TaskId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comments");
+                });
 
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
                 {
@@ -41,13 +81,14 @@ namespace Tasco.TaskService.Repository.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("NewValue")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("OldValue")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -73,51 +114,6 @@ namespace Tasco.TaskService.Repository.Migrations
                     b.ToTable("TaskActions");
                 });
 
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskFile", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<long>("FileSize")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("FileType")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<Guid>("UploadedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UploadedByUserName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<DateTime>("UploadedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("WorkTaskId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WorkTaskId");
-
-                    b.ToTable("TaskFiles");
-                });
-
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskMember", b =>
                 {
                     b.Property<Guid>("Id")
@@ -133,13 +129,15 @@ namespace Tasco.TaskService.Repository.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserEmail")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -170,7 +168,7 @@ namespace Tasco.TaskService.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CompletedByUserId")
+                    b.Property<Guid?>("CompletedByUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CompletedDate")
@@ -191,6 +189,9 @@ namespace Tasco.TaskService.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Title")
@@ -229,6 +230,9 @@ namespace Tasco.TaskService.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -278,6 +282,9 @@ namespace Tasco.TaskService.Repository.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Priority")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -306,26 +313,32 @@ namespace Tasco.TaskService.Repository.Migrations
 
                     b.HasIndex("CreatedByUserId");
 
+                    b.HasIndex("DueDate");
+
+                    b.HasIndex("Priority");
+
+                    b.HasIndex("Status");
+
                     b.HasIndex("WorkAreaId");
 
                     b.ToTable("WorkTasks");
                 });
 
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.Comment", b =>
                 {
                     b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
-                        .WithMany("TaskActions")
-                        .HasForeignKey("WorkTaskId")
+                        .WithMany("Comments")
+                        .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("WorkTask");
                 });
 
-            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskFile", b =>
+            modelBuilder.Entity("Tasco.TaskService.Repository.Entities.TaskAction", b =>
                 {
                     b.HasOne("Tasco.TaskService.Repository.Entities.WorkTask", "WorkTask")
-                        .WithMany("TaskFiles")
+                        .WithMany("TaskActions")
                         .HasForeignKey("WorkTaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -373,9 +386,9 @@ namespace Tasco.TaskService.Repository.Migrations
 
             modelBuilder.Entity("Tasco.TaskService.Repository.Entities.WorkTask", b =>
                 {
-                    b.Navigation("TaskActions");
+                    b.Navigation("Comments");
 
-                    b.Navigation("TaskFiles");
+                    b.Navigation("TaskActions");
 
                     b.Navigation("TaskMembers");
 

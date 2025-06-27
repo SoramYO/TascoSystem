@@ -1,23 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.Query;
 using Tasco.ProjectService.Repository.Paginate;
 
 namespace Tasco.ProjectService.Repository.Repositories
+
 {
-    public interface IGenericRepository<T>
+    public interface IGenericRepository<T> : IDisposable where T : class
     {
         #region Get Async
 
         Task<T> SingleOrDefaultAsync(
             Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
-            bool enableSplitQuery = false);
+            Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
 
         Task<TResult> SingleOrDefaultAsync<TResult>(
             Expression<Func<T, TResult>> selector,
@@ -35,7 +30,6 @@ namespace Tasco.ProjectService.Repository.Repositories
             Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null);
-
         Task<IPaginate<T>> GetPagingListAsync(
             Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -63,13 +57,13 @@ namespace Tasco.ProjectService.Repository.Repositories
 
         #region Update
 
-        void Update(T entity);
+        void UpdateAsync(T entity);
 
         void UpdateRange(IEnumerable<T> entities);
 
         #endregion
 
-        void Delete(T entity);
-        void DeleteRange(IEnumerable<T> entities);
+        void DeleteAsync(T entity);
+        void DeleteRangeAsync(IEnumerable<T> entities);
     }
 }
