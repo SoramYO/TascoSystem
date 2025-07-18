@@ -1,56 +1,59 @@
-using Newtonsoft.Json;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Impl;
-using System.Text;
-using System.Threading.Tasks;
 using Tasco.TaskService.Repository.Entities;
 using Tasco.TaskService.Service.Interfaces;
+using Tasco.Shared.Notifications.Interfaces;
+using Tasco.Shared.Notifications.Models;
 
 namespace Tasco.TaskService.Service.Implementations
 {
     public class NotificationService : INotificationService
     {
-        private readonly ConnectionFactory _factory;
+        private readonly INotificationPublisher _notificationPublisher;
 
-        public NotificationService()
+        public NotificationService(INotificationPublisher notificationPublisher)
         {
-            _factory = new ConnectionFactory
-            {
-                HostName = "localhost",
-                Port = 5673,
-                UserName = "admin",
-                Password = "admin123",
-                VirtualHost = "/"
-            };
+            _notificationPublisher = notificationPublisher;
         }
 
         public async Task SendNotificationAsync(NotificationMessage message)
         {
-            using var connection = await _factory.CreateConnectionAsync();
-            using var channel = await connection.CreateChannelAsync();
-
-            var queueName = "notification_queue";
-            await channel.QueueDeclareAsync(queue: queueName, durable: true, exclusive: false, autoDelete: false);
-
-            var json = JsonConvert.SerializeObject(message);
-            var body = Encoding.UTF8.GetBytes(json);
-
-            var properties = new BasicProperties
+            var sharedNotificationMessage = new NotificationMessage
             {
-                Persistent = true,
-                ContentType = "application/json",
-                MessageId = message.Id,
-                Timestamp = new AmqpTimestamp(DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                Id = message.Id,
+                UserId = message.UserId,
+                Title = message.Title,
+                Message = message.Message,
+                Type = message.Type,
+                ProjectId = message.ProjectId,
+                TaskId = message.TaskId,
+                CreatedAt = message.CreatedAt,
+                IsRead = message.IsRead,
+                Metadata = message.Metadata,
+                Priority = message.Priority,
+                Channels = message.Channels.Select(c => c).ToList()
             };
 
-            await channel.BasicPublishAsync(
-                exchange: "",
-                routingKey: queueName,
-                mandatory: false,
-                basicProperties: properties,
-                body: body
-            );
-            await Task.CompletedTask;
+            await _notificationPublisher.PublishAsync(sharedNotificationMessage);
+        }
+
+        public async Task<bool> SendNotificationBatchAsync(IEnumerable<NotificationMessage> messages, CancellationToken cancellationToken = default)
+        {
+            var sharedNotificationMessages = messages.Select(message => new NotificationMessage
+            {
+                Id = message.Id,
+                UserId = message.UserId,
+                Title = message.Title,
+                Message = message.Message,
+                Type = message.Type,
+                ProjectId = message.ProjectId,
+                TaskId = message.TaskId,
+                CreatedAt = message.CreatedAt,
+                IsRead = message.IsRead,
+                Metadata = message.Metadata,
+                Priority = message.Priority,
+                Channels = message.Channels.Select(c => c).ToList()
+            });
+
+            return await _notificationPublisher.PublishBatchAsync(sharedNotificationMessages, cancellationToken);
         }
     }
-}
+} 

@@ -42,35 +42,37 @@ namespace Tasco.Orchestrator.Api
             });
             builder.Services.AddGrpcClient<Project.ProjectClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7202");
+                //o.Address = new Uri("http://localhost:5002");
+                o.Address = new Uri("http://projectservice:8080");
             });
             builder.Services.AddGrpcClient<ProjectMemberService.ProjectMemberServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7202");
+                //o.Address = new Uri("http://localhost:5002");
+                o.Address = new Uri("http://projectservice:8080");
             });
             builder.Services.AddGrpcClient<WorkAreaService.WorkAreaServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7260");
+                o.Address = new Uri("http://taskservice:8080");
             });
             builder.Services.AddGrpcClient<WorkTaskService.WorkTaskServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7260");
+                o.Address = new Uri("http://taskservice:8080");
             });
             builder.Services.AddGrpcClient<SubTaskService.SubTaskServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7260");
+                o.Address = new Uri("http://taskservice:8080");
             });
             builder.Services.AddGrpcClient<TaskObjectiveService.TaskObjectiveServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7260");
+                o.Address = new Uri("http://taskservice:8080");
             });
             builder.Services.AddGrpcClient<TaskMemberService.TaskMemberServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7260");
+                o.Address = new Uri("http://taskservice:8080");
             });
             builder.Services.AddGrpcClient<CommentService.CommentServiceClient>(o =>
             {
-                o.Address = new Uri("https://localhost:7260");
+                o.Address = new Uri("http://taskservice:8080");
             });
 
             var app = builder.Build();
@@ -82,7 +84,6 @@ namespace Tasco.Orchestrator.Api
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
 
             app.UseCors("AllowAll");
 

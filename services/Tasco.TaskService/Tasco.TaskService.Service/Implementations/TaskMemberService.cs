@@ -11,15 +11,19 @@ using Tasco.TaskService.Repository.UnitOfWork;
 using Tasco.TaskService.Repository.Paginate;
 using Tasco.TaskService.Service.BusinessModels;
 using Tasco.TaskService.Service.Interfaces;
+using Tasco.Shared.Notifications.Interfaces;
+using Tasco.Shared.Notifications.Models;
 
 namespace Tasco.TaskService.Service.Implementations
     {
     public class TaskMemberService : BaseService<TaskMemberService>, ITaskMemberService
     {
+        private readonly INotificationPublisher _notificationPublisher;
         public TaskMemberService(IUnitOfWork<TaskManagementDbContext> unitOfWork, ILogger<TaskMemberService> logger,
-            IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(unitOfWork, logger, mapper,
+            IMapper mapper, IHttpContextAccessor httpContextAccessor, INotificationPublisher notificationPublisher) : base(unitOfWork, logger, mapper,
             httpContextAccessor)
         {
+            _notificationPublisher = notificationPublisher;
         }
 
         public async Task AssignWorkTaskToUser(Guid workTaskId, Guid userId, string userName)
@@ -55,6 +59,19 @@ namespace Tasco.TaskService.Service.Implementations
             };
             await _unitOfWork.GetRepository<TaskMember>().InsertAsync(taskMember);
             await _unitOfWork.CommitAsync();
+            var notification = new NotificationMessage
+            {
+                UserId = userId.ToString(),
+                Title = "You have been assigned a new task",
+                Message = $"Hello {userName}, you have been assigned to the task: {workTask.Title}",
+                Type = NotificationType.TaskAssigned,
+                TaskId = workTaskId.ToString(),
+                CreatedAt = DateTime.UtcNow,
+                Priority = NotificationPriority.Normal,
+                Channels = new List<NotificationChannel> { NotificationChannel.Email }
+            };
+
+            await _notificationPublisher.PublishAsync(notification);
         }
 
         public async Task RemoveWorkTaskFromUser(Guid workTaskId, Guid userId)

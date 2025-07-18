@@ -12,6 +12,9 @@ using Tasco.TaskService.Service.Implementations;
 using Tasco.TaskService.Service.Interfaces;
 using DotNetEnv;
 using Tasco.TaskService.API.Middlewares;
+using Tasco.Shared.Notifications.Interfaces;
+using Tasco.Shared.Notifications.Publishers;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 namespace Tasco.TaskService.API
 {
     public class Program
@@ -69,7 +72,18 @@ namespace Tasco.TaskService.API
             }
             // Add gRPC services
             builder.Services.AddGrpc();
-
+            builder.WebHost.ConfigureKestrel(options =>
+            {
+                // gRPC (HTTP/2)
+                options.ListenAnyIP(8080, listenOptions =>
+                {
+                    listenOptions.Protocols = HttpProtocols.Http2;
+                });
+                options.ListenAnyIP(8081, listenOptions =>
+                {
+                    listenOptions.Protocols = HttpProtocols.Http1;
+                });
+            });
             // Add DbContext
             builder.Services.AddDbContext<TaskManagementDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -88,6 +102,9 @@ namespace Tasco.TaskService.API
             builder.Services.AddScoped<ICommentService, CommentService>();
             builder.Services.AddScoped<ITaskObjectiveService, TaskObjectiveService>();
             builder.Services.AddScoped<INotificationService, NotificationService>();
+
+            // Add Notification Services
+            builder.Services.AddScoped<INotificationPublisher, RabbitMQNotificationPublisher>();
             // Add HttpContextAccessor
             builder.Services.AddHttpContextAccessor();
 
@@ -103,7 +120,7 @@ namespace Tasco.TaskService.API
                 {
                     throw new InvalidOperationException("JWT Key is not configured. Please set Jwt:Key in configuration.");
                 }
-                
+
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidIssuer = builder.Configuration["Jwt:Issuer"],
@@ -114,18 +131,32 @@ namespace Tasco.TaskService.API
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(jwtKey))
                 };
-                
+
                 options.TokenValidationParameters.NameClaimType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier";
                 options.TokenValidationParameters.RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
             });
-            
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment() && enableSwagger)
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+            }
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<TaskManagementDbContext>();
+                try
+                {
+                    dbContext.Database.Migrate(); // Apply pending migrations
+                }
+                catch (Exception ex)
+                {
+                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while applying migrations.");
+                    throw; // Re-throw to ensure startup fails if migrations fail
+                }
             }
 
             app.UseHttpsRedirection();

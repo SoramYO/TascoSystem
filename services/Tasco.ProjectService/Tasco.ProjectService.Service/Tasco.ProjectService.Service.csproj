@@ -25,16 +25,19 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="NLog.Web.AspNetCore" Version="5.5.0" />
+		<PackageReference Include="NLog" Version="5.5.0" />
 		<PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<Protobuf Include="Proto\project.proto" GrpcServices="Server" ProtoRoot="Proto" />
 		<Protobuf Include="Proto\ProjectMenber.proto" GrpcServices="Server" ProtoRoot="Proto" />
-
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Tasco.ProjectService.Repository\Tasco.ProjectService.Repository.csproj" />
+		<ProjectReference Include="..\..\Tasco.Shared\Tasco.Shared.Notifications\Tasco.Shared.Notifications.csproj" />
 	</ItemGroup>
 
 </Project>

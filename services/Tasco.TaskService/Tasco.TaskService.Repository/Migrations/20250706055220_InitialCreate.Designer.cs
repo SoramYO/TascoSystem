@@ -12,7 +12,7 @@ using Tasco.TaskService.Repository.Entities;
 namespace Tasco.TaskService.Repository.Migrations
 {
     [DbContext(typeof(TaskManagementDbContext))]
-    [Migration("20250627103758_InitialCreate")]
+    [Migration("20250706055220_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Tasco.TaskService.Repository.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushMessageQueue", "PushMessageQueue\PushMessageQueue.csproj", "{F662A063-D14E-4EAD-8DEB-423E22240D1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasco.Shared.Notifications", "Tasco.Shared.Notifications\Tasco.Shared.Notifications.csproj", "{C9F2018D-E208-4DB6-9452-0146CDC9D42D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F662A063-D14E-4EAD-8DEB-423E22240D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F662A063-D14E-4EAD-8DEB-423E22240D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F662A063-D14E-4EAD-8DEB-423E22240D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F662A063-D14E-4EAD-8DEB-423E22240D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F2018D-E208-4DB6-9452-0146CDC9D42D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F2018D-E208-4DB6-9452-0146CDC9D42D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F2018D-E208-4DB6-9452-0146CDC9D42D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F2018D-E208-4DB6-9452-0146CDC9D42D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E5E1241E-C014-4748-B304-1717C653A146}
+		SolutionGuid = {1579AC2D-3869-49F9-B3EE-E0F6B52C0154}
 	EndGlobalSection
 EndGlobal

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj": {}
+    "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj": {}
   },
   "projects": {
-    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj": {
+    "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj",
+        "projectUniqueName": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj",
         "projectName": "Tasco.ProjectService.Repository",
-        "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj",
-        "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
-        "outputPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\obj\\",
+        "projectPath": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj",
+        "packagesPath": "C:\\Users\\son\\.nuget\\packages\\",
+        "outputPath": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\son\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,7 +32,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj": {
+                "projectPath": "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -51,19 +55,29 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.16, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.5, )"
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.5, )"
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
@@ -86,24 +100,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj": {
+    "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
+        "projectUniqueName": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
         "projectName": "Tasco.ProjectService.Service",
-        "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
-        "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
-        "outputPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\obj\\",
+        "projectPath": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\Tasco.ProjectService.Service.csproj",
+        "packagesPath": "C:\\Users\\son\\.nuget\\packages\\",
+        "outputPath": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\son\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -119,8 +133,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj": {
-                "projectPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj"
+              "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj": {
+                "projectPath": "D:\\TascoSystem\\services\\Tasco.ProjectService\\Tasco.ProjectService.Repository\\Tasco.ProjectService.Repository.csproj"
+              },
+              "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj": {
+                "projectPath": "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj"
               }
             }
           }
@@ -163,6 +180,14 @@
               "target": "Package",
               "version": "[2.72.0, )"
             },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.5.0, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.5.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -188,7 +213,95 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj",
+        "projectName": "Tasco.Shared.Notifications",
+        "projectPath": "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\Tasco.Shared.Notifications.csproj",
+        "packagesPath": "C:\\Users\\son\\.nuget\\packages\\",
+        "outputPath": "D:\\TascoSystem\\services\\Tasco.Shared\\Tasco.Shared.Notifications\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\son\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

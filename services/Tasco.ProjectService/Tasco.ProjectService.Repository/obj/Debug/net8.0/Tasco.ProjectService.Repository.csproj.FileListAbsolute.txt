@@ -9,3 +9,40 @@ D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Reposi
 D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\refint\Tasco.ProjectService.Repository.dll
 D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.pdb
 D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\ref\Tasco.ProjectService.Repository.dll
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.runtimeconfig.json
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.csproj.AssemblyReference.cache
+D:\Project\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.genruntimeconfig.cache
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.deps.json
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.runtimeconfig.json
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.dll
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.pdb
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.csproj.AssemblyReference.cache
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.GeneratedMSBuildEditorConfig.editorconfig
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.AssemblyInfoInputs.cache
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.AssemblyInfo.cs
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.csproj.CoreCompileInputs.cache
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.dll
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\refint\Tasco.ProjectService.Repository.dll
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.pdb
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.genruntimeconfig.cache
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\ref\Tasco.ProjectService.Repository.dll
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.Shared.Notifications.dll
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.Shared.Notifications.pdb
+E:\TERM8\PRN232\New folder\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.Pr.6963CB67.Up2Date
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.deps.json
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.runtimeconfig.json
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.dll
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.ProjectService.Repository.pdb
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.Shared.Notifications.dll
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\bin\Debug\net8.0\Tasco.Shared.Notifications.pdb
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.csproj.AssemblyReference.cache
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.AssemblyInfoInputs.cache
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.AssemblyInfo.cs
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.csproj.CoreCompileInputs.cache
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.Pr.6963CB67.Up2Date
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.dll
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\refint\Tasco.ProjectService.Repository.dll
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.pdb
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\Tasco.ProjectService.Repository.genruntimeconfig.cache
+D:\TascoSystem\services\Tasco.ProjectService\Tasco.ProjectService.Repository\obj\Debug\net8.0\ref\Tasco.ProjectService.Repository.dll

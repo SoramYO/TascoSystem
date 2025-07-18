@@ -223,5 +223,48 @@ namespace Tasco.Orchestrator.Infrastructure.GrpcClients
                 };
             }
         }
+
+        /// <summary>
+        /// Lay danh sách dự án để apply
+        /// <summary>
+        public async Task<PageProjectResponse> GetProjectForApplyAsync(int pageSize, int pageNumber, string search = "", bool isDelete = false)
+        {
+            try
+            {
+                _logger.LogInformation("Calling GetProjectForApply for page {PageNumber}", pageNumber);
+                var request = new SearchProjectsRequest
+                {
+                    IncludeDeleted = isDelete,
+                    PageSize = pageSize,
+                    PageNumber = pageNumber,
+                    SearchTerm = search ?? ""
+                };
+                var response = await _projectClient.GetPageProjectsAsync(request);
+                _logger.LogInformation("GetProjectForApply completed successfully, returned {Count} projects", response.Projects.Count);
+                return response;
+            }
+            catch (RpcException ex)
+            {
+                _logger.LogError(ex, "gRPC error occurred while getting projects for apply");
+                return new PageProjectResponse
+                {
+                    TotalPage = 0,
+                    PageSize = pageSize,
+                    PageNumber = pageNumber,
+                    TotalCount = 0
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error occurred while getting projects for apply");
+                return new PageProjectResponse
+                {
+                    TotalPage = 0,
+                    PageSize = pageSize,
+                    PageNumber = pageNumber,
+                    TotalCount = 0
+                };
+            }
+        }
     }
 }

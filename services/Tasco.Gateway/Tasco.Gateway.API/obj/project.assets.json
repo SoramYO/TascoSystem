@@ -5751,23 +5751,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\son\\.nuget\\packages\\": {},
+    "C:\\Users\\subih\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
+      "projectUniqueName": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
       "projectName": "Tasco.Gateway.API",
-      "projectPath": "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
-      "packagesPath": "C:\\Users\\son\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\son\\Downloads\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\obj\\",
+      "projectPath": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.csproj",
+      "packagesPath": "C:\\Users\\subih\\.nuget\\packages\\",
+      "outputPath": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\son\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\subih\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5841,7 +5841,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

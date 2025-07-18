@@ -12,27 +12,31 @@ using Tasco.TaskService.Repository.Paginate;
 using Tasco.TaskService.Repository.UnitOfWork;
 using Tasco.TaskService.Service.BusinessModels;
 using Tasco.TaskService.Service.Interfaces;
+using Tasco.Shared.Notifications.Interfaces;
 
 namespace Tasco.TaskService.Service.Implementations
 {
     public class WorkTaskService : BaseService<WorkTaskService>, IWorkTaskService
     {
         private readonly ITaskActionService _taskActionService;
+        private readonly INotificationPublisher _notificationPublisher;
 
         public WorkTaskService(
             IUnitOfWork<TaskManagementDbContext> unitOfWork,
             ILogger<WorkTaskService> logger, IMapper mapper,
             IHttpContextAccessor httpContextAccessor,
-            ITaskActionService taskActionService
+            ITaskActionService taskActionService,
+            INotificationPublisher notificationPublisher
         ) : base(unitOfWork, logger, mapper, httpContextAccessor)
         {
             _taskActionService = taskActionService;
+            _notificationPublisher = notificationPublisher;
         }
 
         public async Task<WorkTask> CreateWorkTask(WorkTaskBusinessModel workTask)
         {
             var entity = _mapper.Map<WorkTask>(workTask);
-            
+
 
             // Set creation info
             entity.CreatedByUserId = workTask.CreatedByUserId;
@@ -43,10 +47,10 @@ namespace Tasco.TaskService.Service.Implementations
 
             entity.TaskMembers.Add(new TaskMember
             {
-                UserId =  workTask.CreatedByUserId,
+                UserId = workTask.CreatedByUserId,
                 UserName = workTask.CreatedByUserName,
                 Role = "Assignee",
-                AssignedByUserId =  workTask.CreatedByUserId,
+                AssignedByUserId = workTask.CreatedByUserId,
                 AssignedDate = DateTime.UtcNow,
                 IsActive = true
             });
@@ -69,15 +73,25 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task DeleteWorkTask(Guid id)
         {
             var task = await _unitOfWork.GetRepository<WorkTask>()
-                .SingleOrDefaultAsync(predicate: t => t.Id == id && !t.IsDeleted);
+            .SingleOrDefaultAsync(
+                predicate: t => t.Id == id,
+                include: t => t
+                    .Include(x => x.TaskMembers)
+                    .Include(x => x.TaskObjectives)
+                    .Include(x => x.TaskActions)
+                    .Include(x => x.Comments)
+            );
 
             if (task == null)
             {
                 throw new KeyNotFoundException($"Work task with ID {id} not found.");
             }
+            _unitOfWork.GetRepository<TaskMember>().DeleteRange(task.TaskMembers);
+            _unitOfWork.GetRepository<TaskObjective>().DeleteRange(task.TaskObjectives);
+            _unitOfWork.GetRepository<TaskAction>().DeleteRange(task.TaskActions);
+            _unitOfWork.GetRepository<Comment>().DeleteRange(task.Comments);
 
-            task.IsDeleted = true;
-            _unitOfWork.GetRepository<WorkTask>().Update(task);
+            _unitOfWork.GetRepository<WorkTask>().Delete(task);
             await _unitOfWork.CommitAsync();
         }
 
@@ -169,6 +183,26 @@ namespace Tasco.TaskService.Service.Implementations
                 changes.Add("Status");
                 oldValues.Add(existingTask.Status ?? "");
                 newValues.Add(workTask.Status ?? "");
+
+                // Gửi mail cho tất cả thành viên khi thay đổi trạng thái
+                if (existingTask.TaskMembers != null && existingTask.TaskMembers.Count > 0)
+                {
+                    foreach (var member in existingTask.TaskMembers.Where(m => m.IsActive && !m.IsDeleted))
+                    {
+                        var notification = new Tasco.Shared.Notifications.Models.NotificationMessage
+                        {
+                            UserId = member.UserId.ToString(),
+                            Title = $"Task '{existingTask.Title}' status changed",
+                            Message = $"Hello {member.UserName}, the status of task '{existingTask.Title}' has changed from '{existingTask.Status}' to '{workTask.Status}'!",
+                            Type = Tasco.Shared.Notifications.Models.NotificationType.TaskStatusChanged,
+                            TaskId = existingTask.Id.ToString(),
+                            CreatedAt = DateTime.UtcNow,
+                            Priority = Tasco.Shared.Notifications.Models.NotificationPriority.Normal,
+                            Channels = new List<Tasco.Shared.Notifications.Models.NotificationChannel> { Tasco.Shared.Notifications.Models.NotificationChannel.Email }
+                        };
+                        await _notificationPublisher.PublishAsync(notification);
+                    }
+                }
             }
 
             if (existingTask.Priority != workTask.Priority)
@@ -204,6 +238,19 @@ namespace Tasco.TaskService.Service.Implementations
                 changes.Add("Progress");
                 oldValues.Add(existingTask.Progress.ToString());
                 newValues.Add(workTask.Progress.ToString());
+            }
+            if (existingTask.DisplayOrder != workTask.DisplayOrder)
+            {
+                changes.Add("DisplayOrder");
+                oldValues.Add(existingTask.DisplayOrder.ToString());
+                newValues.Add(workTask.DisplayOrder.ToString());
+            }
+
+            if (existingTask.WorkAreaId != workTask.WorkAreaId)
+            {
+                changes.Add("WorkAreaId");
+                oldValues.Add(existingTask.WorkAreaId.ToString());
+                newValues.Add(workTask.WorkAreaId.ToString());
             }
 
             // Preserve original creation data

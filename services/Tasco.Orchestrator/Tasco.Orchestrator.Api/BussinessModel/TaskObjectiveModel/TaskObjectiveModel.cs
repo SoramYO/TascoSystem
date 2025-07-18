@@ -55,5 +55,11 @@ namespace Tasco.Orchestrator.Api.BussinessModel.TaskObjectiveModel
         /// Trạng thái hoàn thành
         /// </summary>
         public bool IsCompleted { get; set; }
+        public string id { get; set; } = string.Empty;
+        public string workTaskId { get; set; } = string.Empty;
+        public string title { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
+        public string displayOrder { get; set; } = string.Empty;
+        public string completedByUserId { get; set; } = string.Empty;
     }
 }

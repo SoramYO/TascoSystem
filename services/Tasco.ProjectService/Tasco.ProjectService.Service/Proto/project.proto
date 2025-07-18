@@ -9,6 +9,7 @@
 	  rpc UpdateProject (UpdateProjectRequest) returns (BoolResponse);
 	  rpc DeleteProject (GetProjectByIdRequest) returns (BoolResponse);
 	  rpc GetProjectForManber (GetProjectBymenberPage) returns (PageProjectResponse);
+	  rpc GetPageProjects (SearchProjectsRequest) returns (PageProjectResponse);
 	}
 	// ===== REQUEST =====
 	message GetProjectByIdRequest {
@@ -43,8 +44,6 @@
 	  int32 page_size = 2;
 	  int32 page_number = 3;
 	  bool include_deleted = 4;
-	  string sort_by = 5;
-	  bool sort_desc = 6;
 	}
 
 	// ===== RESPONSE =====

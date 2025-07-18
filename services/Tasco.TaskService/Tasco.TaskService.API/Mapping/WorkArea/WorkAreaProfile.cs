@@ -18,7 +18,12 @@ namespace Tasco.TaskService.API.Mapping.WorkArea
                 .ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(src => DateTime.Now))
                 .ForMember(dest => dest.CreatedByUserId, opt => opt.ConvertUsing(new StringToGuidConverter(), src => src.CreateByUserId))
                 .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => true));
-
+            CreateMap<Repository.Entities.TaskMember, WorkAreaTaskMemberResponse>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.ToString()))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId.ToString()))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName ?? "")) // tránh null
+                .ForMember(dest => dest.UserEmail, opt => opt.MapFrom(src => src.UserEmail ?? "")) // tránh null
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role ?? ""));
             CreateMap<UpdateWorkAreaRequest, WorkAreaBusinessModel>()
                 .ForMember(dest => dest.ProjectId, opt => opt.ConvertUsing(new StringToGuidConverter(), src => src.Area.ProjectId))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Area.Name))
@@ -71,14 +76,14 @@ namespace Tasco.TaskService.API.Mapping.WorkArea
                 System.Diagnostics.Debug.WriteLine($"Warning: Empty GUID value encountered");
                 return Guid.Empty;
             }
-            
+
             if (!Guid.TryParse(sourceMember, out var guid))
             {
                 // Log warning for invalid GUID format
                 System.Diagnostics.Debug.WriteLine($"Warning: Invalid GUID format: {sourceMember}");
                 return Guid.Empty;
             }
-            
+
             return guid;
         }
     }
@@ -92,4 +97,4 @@ namespace Tasco.TaskService.API.Mapping.WorkArea
             return int.TryParse(sourceMember, out var result) ? result : 0;
         }
     }
-} 
+}

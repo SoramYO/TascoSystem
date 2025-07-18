@@ -1,37 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\",
+  "WorkspaceRootPath": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\middlewares\\gatewayauthmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\middlewares\\gatewayauthmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\middlewares\\tokentransformextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\middlewares\\tokentransformextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\controllers\\healthcheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\controllers\\healthcheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\controllers\\healthcheckcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\tasco.gateway.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\middlewares\\gatewayauthmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\middlewares\\gatewayauthmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\middlewares\\tokentransformextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\middlewares\\tokentransformextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\tasco.gateway.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\tasco.gateway.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|e:\\term8\\prn232\\new folder\\tascosystem\\services\\tasco.gateway\\tasco.gateway.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{EAF00C19-7D74-4509-BDCA-D43337E693D9}|Tasco.Gateway.API\\Tasco.Gateway.API.csproj|solutionrelative:tasco.gateway.api\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
@@ -42,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1070,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,23 +54,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "HealthCheckController.cs",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Controllers\\HealthCheckController.cs",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Controllers\\HealthCheckController.cs",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\Controllers\\HealthCheckController.cs",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Controllers\\HealthCheckController.cs",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Controllers\\HealthCheckController.cs",
               "RelativeToolTip": "Tasco.Gateway.API\\Controllers\\HealthCheckController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T16:18:15.776Z"
+              "WhenOpened": "2025-06-23T16:18:15.776Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": ".env",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\.env",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\.env",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\.env",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\.env",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\.env",
               "RelativeToolTip": "Tasco.Gateway.API\\.env",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
@@ -82,11 +79,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Tasco.Gateway.API.http",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.http",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.http",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\Tasco.Gateway.API.http",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.http",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Tasco.Gateway.API.http",
               "RelativeToolTip": "Tasco.Gateway.API\\Tasco.Gateway.API.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
@@ -94,11 +91,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "JwtHelper.cs",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Helper\\JwtHelper.cs",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Helper\\JwtHelper.cs",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\Helper\\JwtHelper.cs",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Helper\\JwtHelper.cs",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Helper\\JwtHelper.cs",
               "RelativeToolTip": "Tasco.Gateway.API\\Helper\\JwtHelper.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -106,24 +103,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\appsettings.json",
-              "RelativeDocumentMoniker": "Tasco.Gateway.API\\appsettings.json",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\appsettings.json",
-              "RelativeToolTip": "Tasco.Gateway.API\\appsettings.json",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAUwGIAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-20T15:44:04.672Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "TokenTransformExtensions.cs",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\TokenTransformExtensions.cs",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\TokenTransformExtensions.cs",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\Middlewares\\TokenTransformExtensions.cs",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\TokenTransformExtensions.cs",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\TokenTransformExtensions.cs",
               "RelativeToolTip": "Tasco.Gateway.API\\Middlewares\\TokenTransformExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -133,24 +117,23 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "GatewayAuthMiddleware.cs",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\GatewayAuthMiddleware.cs",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\GatewayAuthMiddleware.cs",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\Middlewares\\GatewayAuthMiddleware.cs",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\GatewayAuthMiddleware.cs",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Middlewares\\GatewayAuthMiddleware.cs",
               "RelativeToolTip": "Tasco.Gateway.API\\Middlewares\\GatewayAuthMiddleware.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAEwEMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T15:18:26.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-20T15:18:26.815Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Program.cs",
+              "DocumentMoniker": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Program.cs",
               "RelativeDocumentMoniker": "Tasco.Gateway.API\\Program.cs",
-              "ToolTip": "E:\\TERM8\\PRN232\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Program.cs",
+              "ToolTip": "E:\\TERM8\\PRN232\\New folder\\TascoSystem\\services\\Tasco.Gateway\\Tasco.Gateway.API\\Program.cs",
               "RelativeToolTip": "Tasco.Gateway.API\\Program.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAIwIcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAewIYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T15:09:41.524Z",
               "EditorCaption": ""

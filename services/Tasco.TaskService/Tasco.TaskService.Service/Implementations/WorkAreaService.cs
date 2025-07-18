@@ -18,13 +18,16 @@ namespace Tasco.TaskService.Service.Implementations
 {
     public class WorkAreaService : BaseService<WorkAreaService>, IWorkAreaService
     {
+        private readonly IWorkTaskService _workTaskService;
         public WorkAreaService(
             IUnitOfWork<TaskManagementDbContext> unitOfWork,
             ILogger<WorkAreaService> logger,
             IMapper mapper,
-            IHttpContextAccessor httpContextAccessor
+            IHttpContextAccessor httpContextAccessor,
+            IWorkTaskService workTaskService
         ) : base(unitOfWork, logger, mapper, httpContextAccessor)
         {
+            _workTaskService = workTaskService;
         }
 
         public async Task<WorkArea> CreateWorkArea(WorkAreaBusinessModel workArea)
@@ -42,15 +45,20 @@ namespace Tasco.TaskService.Service.Implementations
         public async Task DeleteWorkArea(Guid id)
         {
             var workArea = await _unitOfWork.GetRepository<WorkArea>()
-                .SingleOrDefaultAsync(predicate: w => w.Id == id && !w.IsDeleted);
+                .SingleOrDefaultAsync(predicate: w => w.Id == id && !w.IsDeleted,
+                include: q => q
+                .Include(w => w.WorkTasks));
 
             if (workArea == null)
             {
                 throw new KeyNotFoundException($"Work area with ID {id} not found.");
             }
-
-            workArea.IsDeleted = true;
-            _unitOfWork.GetRepository<WorkArea>().Update(workArea);
+            foreach (var task in workArea.WorkTasks)
+            {
+                await _workTaskService.DeleteWorkTask(task.Id);
+            }
+            _unitOfWork.GetRepository<WorkArea>().Delete(workArea);
+            _logger.LogInformation($"Deleting work area with ID {id} and name {workArea.Name}.");
             await _unitOfWork.CommitAsync();
         }
 
@@ -103,23 +111,23 @@ namespace Tasco.TaskService.Service.Implementations
             {
                 throw new KeyNotFoundException($"Work area with ID {id} not found.");
             }
-            
+
             _logger.LogInformation($"Updating work area with ID {id}");
             _logger.LogInformation($"Work area: {JsonConvert.SerializeObject(workArea)}");
 
-            
+
             // Update the fields
             existingWorkArea.Name = workArea.Name;
             existingWorkArea.Description = workArea.Description;
             existingWorkArea.DisplayOrder = workArea.DisplayOrder;
             existingWorkArea.ProjectId = workArea.ProjectId;
-            
+
             // Only update CreatedByUserId if it's not empty
             if (workArea.CreatedByUserId != Guid.Empty)
             {
                 existingWorkArea.CreatedByUserId = workArea.CreatedByUserId;
             }
-            
+
             _unitOfWork.GetRepository<WorkArea>().Update(existingWorkArea);
             await _unitOfWork.CommitAsync();
         }

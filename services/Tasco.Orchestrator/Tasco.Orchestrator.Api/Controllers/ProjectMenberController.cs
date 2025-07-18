@@ -42,31 +42,35 @@ namespace Tasco.Orchestrator.Api.Controllers
                 {
                     return BadRequest("Member ID is required");
                 }
-                var currentUserId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-                _logger.LogInformation("Removing member {MemberId} from project {ProjectId} by user {UserId}",
+
+                if (Guid.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out Guid currentUserId))
+                {
+                    _logger.LogInformation("Removing member {MemberId} from project {ProjectId} by user {UserId}",
                     memberId, projectId, currentUserId);
 
-                var response = await _projectMemberGrpcClient.RemoveMemberFromProjectAsync(
-                    projectId, memberId, currentUserId);
+                    var response = await _projectMemberGrpcClient.RemoveMemberFromProjectAsync(
+                        projectId, memberId, currentUserId.ToString());
 
-                if (response.Success)
-                {
-                    return Ok(new
+                    if (response.Success)
                     {
-                        success = response.Success,
-                        message = response.Message,
-                        statusCode = response.StatusCode
-                    });
-                }
-                else
-                {
-                    return BadRequest(new
+                        return Ok(new
+                        {
+                            success = response.Success,
+                            message = response.Message,
+                            statusCode = response.StatusCode
+                        });
+                    }
+                    else
                     {
-                        success = response.Success,
-                        message = response.Message,
-                        statusCode = response.StatusCode
-                    });
+                        return BadRequest(new
+                        {
+                            success = response.Success,
+                            message = response.Message,
+                            statusCode = response.StatusCode
+                        });
+                    }
                 }
+                return Unauthorized("Không thể xác định thông tin người dùng");
             }
             catch (Exception ex)
             {

@@ -16,7 +16,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Tasco.Shared\Tasco.Shared.Notifications\Tasco.Shared.Notifications.csproj" />
 		<ProjectReference Include="..\Tasco.TaskService.Repository\Tasco.TaskService.Repository.csproj" />
+		<!-- <ProjectReference Include="..\Tasco.TaskService.Repository\Tasco.TaskService.Repository.csproj" />
+		<ProjectReference Include="..\..\Tasco.Shared\Tasco.Shared.Notifications\Tasco.Shared.Notifications.csproj" /> -->
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Folder Include="Services\" />
 	</ItemGroup>
 
 </Project>

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PushMessageQueue
+namespace Tasco.Shared.Notifications.Models
 {
     public class NotificationMessage
     {
@@ -39,6 +34,18 @@ namespace PushMessageQueue
 
     public enum NotificationType
     {
+        //TaskStatusChanged,
+        //TaskAssigned,
+        //TaskCommentAdded,
+        //TaskUpdated,
+        //TaskDeleted,
+        //ProjectCreated,
+        //ProjectUpdated,
+        //ProjectDeleted,
+        //ProjectMemberAdded,
+        //ProjectMemberRemoved,
+        //DeadlineReminder,
+        //MentionInComment
         TaskStatusChanged,
         TaskAssigned,
         TaskCommentAdded,
@@ -63,4 +70,4 @@ namespace PushMessageQueue
         SMS,
         Push
     }
-}
+} 

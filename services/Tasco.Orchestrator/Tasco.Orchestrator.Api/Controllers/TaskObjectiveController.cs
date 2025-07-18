@@ -376,7 +376,11 @@ namespace Tasco.Orchestrator.Api.Controllers
                     var grpcRequest = new CompleteTaskObjectiveRequest
                     {
                         Id = taskObjectiveId,
-                        IsCompleted = request.IsCompleted
+                        IsCompleted = request.IsCompleted,
+                        WorkTaskId = request.workTaskId,
+                        Title = request.title,
+                        Description = request.description ?? "",
+                        CompletedByUserId = userId.ToString()
                     };
 
                     var response = await _taskObjectiveGrpcClient.CompleteTaskObjectiveAsync(grpcRequest);

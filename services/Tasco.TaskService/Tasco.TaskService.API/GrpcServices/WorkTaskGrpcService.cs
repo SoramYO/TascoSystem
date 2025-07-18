@@ -33,7 +33,7 @@ namespace Tasco.TaskService.API.GrpcServices
             try
             {
                 _logger.LogInformation("Creating work task with title: {Title}", request.Title);
-                
+
                 var model = _mapper.Map<WorkTaskBusinessModel>(request);
                 var result = await _workTaskService.CreateWorkTask(model);
                 return _mapper.Map<WorkTaskResponseUnique>(result);
@@ -76,17 +76,19 @@ namespace Tasco.TaskService.API.GrpcServices
                 }
 
                 _logger.LogInformation("Updating work task with ID: {TaskId}", request.Id);
-                
+
                 Guid taskId = Guid.Parse(request.Id);
                 var model = _mapper.Map<WorkTaskBusinessModel>(request.Task);
-                
+
                 if (model == null)
                 {
                     throw new InvalidOperationException("Failed to map task data");
                 }
-                
+
                 await _workTaskService.UpdateWorkTask(taskId, model);
-                return new WorkTaskResponseUnique();
+                var result = await _workTaskService.GetWorkTaskById(taskId);
+
+                return _mapper.Map<WorkTaskResponseUnique>(result);
             }
             catch (ArgumentException ex)
             {

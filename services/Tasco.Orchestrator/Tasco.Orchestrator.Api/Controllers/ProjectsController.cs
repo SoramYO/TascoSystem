@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Tasco.Orchestrator.Infrastructure.GrpcClients;
-using Tasco.ProjectService.Service.Services.GRpcService;
 using Tasco.Orchestrator.Api.BussinessModel.ProjectModel;
+using static Tasco.Orchestrator.Api.BussinessModel.ProjectModel.ProjectRequest;
+using System.Data;
 
 namespace Tasco.Orchestrator.Api.Controllers
 {
@@ -96,6 +97,9 @@ namespace Tasco.Orchestrator.Api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+
+
 
         /// <summary>
         /// Cập nhật dự án
@@ -201,7 +205,7 @@ namespace Tasco.Orchestrator.Api.Controllers
         /// <param name="search">Từ khóa tìm kiếm</param>
         /// <param name="isDelete">Có lấy dự án đã xóa không</param>
         /// <returns>Danh sách dự án có phân trang</returns>
-        [HttpGet]
+        [HttpGet("my-project")]
         public async Task<IActionResult> GetProjectsForMember(
             [FromQuery] string role = "",
             [FromQuery] int pageSize = 10,
@@ -243,6 +247,53 @@ namespace Tasco.Orchestrator.Api.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        /// <summary>
+        /// Lấy danh sách dự án để apply
+        /// </summary>
+        /// <param name="pageSize">Số lượng item trên mỗi trang</param>
+        /// <param name="pageNumber">Số trang hiện tại</param>
+        /// <param name="searchTearm">Từ khóa tìm kiếm</param>
+        /// <param name="isDelete">Có lấy dự án đã xóa không nên để false hoặc null để tránh người dùng vô nhưng dự án bị xóa</param>
+        /// <returns>Danh sách dự án có phân trang</returns>
+        [HttpGet]
+        public async Task<IActionResult> GetProjetcs(
+            [FromQuery] int pageSize = 10,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] string search = "",
+            [FromQuery] bool isDelete = false)
+        {
+            try
+            {
+
+                if (pageSize <= 0 || pageSize > 1000)
+                {
+                    pageSize = 10;
+                }
+
+                if (pageNumber <= 0)
+                {
+                    pageNumber = 1;
+                }
+
+                _logger.LogInformation("Getting projects for page {PageNumber}",
+                   pageNumber);
+
+                var response = await _projectGrpcClient.GetProjectForApplyAsync(
+                    pageSize,
+                    pageNumber,
+                    search,
+                    isDelete);
+                return Ok(response);
+            }
+            catch
+            {
+                _logger.LogError("Error getting projects");
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
     }
 
 

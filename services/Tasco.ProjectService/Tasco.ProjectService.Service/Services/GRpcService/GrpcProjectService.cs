@@ -21,6 +21,7 @@ namespace Tasco.ProjectService.Service.Services.GRpcService
         {
             _projectService = projectService;
             _logger = logger;
+            _logger.LogInformation("GrpcProjectService constructor called");
         }
         public override async Task<ProjectResponse> GetProjectById(GetProjectByIdRequest request, ServerCallContext context)
         {
@@ -261,6 +262,70 @@ namespace Tasco.ProjectService.Service.Services.GRpcService
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Unexpected error creating project");
+                throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
+            }
+        }
+        public override async Task<PageProjectResponse> GetPageProjects(SearchProjectsRequest request, ServerCallContext context)
+        {
+            try
+            {
+                _logger.LogInformation("Getting projects with search: {Search}, Page: {Page}, Size: {Size}",
+                    request.SearchTerm, request.PageNumber, request.PageSize);
+                var result = await _projectService.GetProjectsAsync(request.PageNumber, request.PageSize, request.SearchTerm, request.IncludeDeleted);
+                return result.Match(
+                    (errorMessage, statusCode) =>
+                    {
+                        _logger.LogError("Failed to get projects: {Error}", errorMessage);
+                        throw new RpcException(new Status(
+                            statusCode == 404 ? StatusCode.NotFound : StatusCode.Internal,
+                            errorMessage
+                        ));
+                    },
+                    (data, message) =>
+                    {
+                        return new PageProjectResponse
+                        {
+                            TotalPage = data.TotalPages,
+                            PageNumber = data.Page,
+                            PageSize = data.Size,
+                            TotalCount = data.Total,
+                            Projects =
+                            {
+                                data.Items.Select(p => new ProjectResponse
+                                {
+                                    Id = p.Id.ToString(),
+                                    Name = p.Name,
+                                    Description = p.Description ?? "",
+                                    OwnerId = p.OwnerId.ToString(),
+                                    CreatedAt = p.CreatedAt.ToString("o"),
+                                    UpdateBy = p.UpdateBy.ToString(),
+                                    UpdatedAt = p.UpdatedAt.ToString("o"),
+                                    IsDeleted = p.IsDeleted,
+                                    DeletedAt = p.DeletedAt?.ToString("o") ?? "",
+                                    Members =
+                                    {
+                                        p.Members.Select(m => new ProjectMember
+                                        {
+                                            UserId = m.UserId.ToString(),
+                                            Role = m.Role,
+                                            ApprovedStatus = m.ApprovedStatus,
+                                            ApprovedUpdateDate = m.ApprovedUpdateDate.ToString("o"),
+                                            IsRemoved = m.IsRemoved,
+                                            RemoveDate = m.RemoveDate?.ToString("o") ?? ""
+                                        })
+                                    }
+                                })
+                            }
+                        };
+                    });
+            }
+            catch (FormatException)
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid search parameters"));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error getting projects");
                 throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
             }
         }
